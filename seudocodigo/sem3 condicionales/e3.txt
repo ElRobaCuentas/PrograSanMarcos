@@ -1,0 +1,30 @@
+//3.- Calcular la comisión sobre las ventas totales de un empleado, sabiendo que el empleado
+no recibe comisión si su venta es hasta S/.150, si la venta es superior a S/.150 y menor o
+igual a S/.400 el empleado recibe una comisión del 10% de las ventas y si las ventas son
+mayores a 400, entonces la comisión es de S/.50 más el 9% de las ventas.
+
+Explicacion:
+Se suele decir venta a credito a una venta que no se ha realizado una comision
+
+Accion CalcularComisionVentas
+
+Real ventaACredito //Entrada
+Real comision //Salida
+
+Inicio 
+
+Leer(ventaACredito)
+
+Si ventaACredito <= 150 Entonces 
+    comision <- 0 
+Sino
+    Si ventaACredito <= 400 Entonces
+        comision <- 0.1*ventaACredito
+    Sino 
+        comision <- 50 + 0.09*ventaACredito
+    Fsi
+Fsi
+
+Escribir(comision)
+
+Fin

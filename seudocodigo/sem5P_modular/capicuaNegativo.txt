@@ -1,0 +1,74 @@
+3. Escribe un programa que solicite números enteros positivos e indique si son o no
+capicúas. El programa solicitará números hasta que se introduzca uno negativo y usará
+los subprogramas anteriores para determinar qué números de los introducidosson
+capicúa.
+
+Entero Acción inverso(Entero n)
+Lógico Acción esCapicua(Entero n)
+Acción muestraCondicion(Lógico cap)
+Acción mostrarCap()
+
+Acción Principal 
+/*
+  En el principal no va nada de lógica. 
+*/
+
+ DV
+ Inicio
+   mostrarCap()
+ Fin
+
+
+Entero Acción inverso(Entero n)
+ DV
+   Entero inv, r
+ Inicio
+   inv <- 0
+   Mientras n > 0 Hacer
+     r <- n mod 10
+     inv <- inv * 10 + r
+     n <- n div 10
+   FinMientras
+   Retornar inv
+ FinAcción
+
+
+Lógico Acción esCapicua(Entero n)
+ DV
+   Entero inv
+   Lógico resp
+ Inicio
+   inv <- inverso(n)
+   Si inv = n Entonces
+     resp <- Verdadero
+   Sino
+     resp <- Falso
+   FinSi
+   Retornar resp
+ FinAcción
+
+
+Acción muestraCondicion(Lógico cap)
+ Inicio
+   Si cap = Verdadero Entonces
+     Escribir("Es capicua")
+   Sino
+     Escribir("No es capicua")
+   FinSi
+ FinAcción
+
+
+Acción mostrarCap()
+ DV
+   Entero n
+   Lógico cap
+ Inicio
+   Hacer
+     Escribir("Ingrese un número (negativo para salir): ")
+     Leer(n)
+     Si n > 0 Entonces
+       cap <- esCapicua(n)
+       muestraCondicion(cap)
+     FinSi
+   Mientras n > 0
+ FinAcción

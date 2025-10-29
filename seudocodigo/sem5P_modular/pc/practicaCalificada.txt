@@ -1,0 +1,79 @@
+Los divisores propios de un numero son aquello divisores menores que él.
+Un numero es deficiente cuando la suma de sus divisores propios es menor que él.
+
+Ejemplo: 10 es defiente ( 1 + 2 + 5 = 8 )
+
+Dado un numero entero, denominado num:
+
+a) Indicar mediante un valor booleano si es deficiente
+b) Presentar un mensaje que indique una de dos opciones:
+    - El numero es deficiente
+    - El numero no es deficiente
+
+
+//Prototipo
+Entero Accion sumaDivisoresP(Entero num)
+Logico Accion esDeficiente(Entero num)
+Accion mostrarMensaje(Logico result)
+
+Accion Principal
+DV
+  Entero num //E
+  Logico result //S
+Inicio 
+  Leer(num)
+  result <- esDeficiente(num)
+  mostrarMensaje(result)
+Fin
+
+Entero Accion sumaDivisoresP(Entero num)
+/*
+Para i=1 -> ¿10 mod 1 = 0? Sí -> suma <- 0 + 1 = 1
+Para i=2 -> ¿10 mod 2 = 0? Sí -> suma <- 1 + 2 = 3
+Para i=3 ... suma = 3
+...
+Para i=5 -> ¿10 mod 5 = 0? Sí -> suma <- 3 + 5 = 8
+...
+
+Al final suma = 8
+*/
+
+DV
+  Entero i, suma
+Inicio
+  suma <- 0
+  Para i desde 1 hasta num-1 Hacer
+    Si num mod i = 0 Entonces
+      suma <- suma + i 
+    FSi
+  FPara
+  Retornar suma
+Fin
+
+Logico Accion esDeficiente(Entero num) 
+DV
+  Logico def
+  Entero suma
+Inicio
+  suma <- sumaDivisoresP(num)
+  Si suma < num Entonces 
+    def <- Verdadero
+  Sino 
+    def <- Falso 
+  FSi 
+  Retornar def
+Fin
+
+Accion mostrarMensaje(Logico result)
+/*
+Logico result recibe result ya calculado en el *principal*: result <- esDeficiente(num). Como va de arriba hacia abajo, llega a esa linea, recibe result 
+un valor booleano, y este procedimiento lo unico que hace es mostrar un mensaje. 
+*/
+
+Inicio 
+  Si result = Verdadero Entonces
+     Escribir("Es deficiente")
+  Sino
+     Escribir("No es deficiente")
+  FSi
+Fin

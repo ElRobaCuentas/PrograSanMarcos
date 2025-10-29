@@ -1,0 +1,34 @@
+// 4.- Se necesita un sistema para un supermercado, en el cual si el monto de la compra del
+cliente es mayor de $5000 se le hará un descuento del 30%, si es menor o igual a $5000 pero
+mayor que $3000 será del 20%, si no rebasa los $3000 pero si los $1000 la rebaja efectiva es
+del 10% y en caso de que no rebase los $1000 no tendrá beneficio.
+
+Accion SistemaMontoDescuento
+
+Real monto //Entrada
+Real descuento //Auxiliar
+Real totalPagar //Salida
+
+Inicio
+
+Leer(monto)
+
+Si monto <= 1000 Entonces 
+    descuento <- 0
+Sino 
+    Si monto <= 3000 Entonces
+        descuento <- monto*0.1
+    Sino 
+        Si monto <= 5000
+            descuento <- monto*0.2
+        Sino 
+            descuento <- monto*0.3
+        FSi
+    FSi
+Fsi
+
+totalPagar <- monto - descuento
+
+Escribir(totalPagar)
+
+Fin

@@ -1,0 +1,47 @@
+Dado un número entero indicar si es Capicúa o no. El subprograma que verifica ello debe
+entregar unresultado booleano.
+
+//Prototipo
+Entero Accion inverso(Entero n)
+Logico Accion obtenerCapicua(Entero n)
+
+Accion Principal
+ DV
+   Entero n //E
+   Logico capicua //S
+ Inicio
+   Leer(n)
+      capicua <-  obtenerCapicua(n)
+      Escribir(capicua)
+Fin
+
+Entero Accion inverso(Entero n)
+  DV
+    Entero inv, r
+  Incio
+    inv <- 0
+    Hacer
+	r <- n mod 10
+	inv <- inv*10 + r
+	n <- n div 10
+    Mientras n > 0 Hacer 
+    FMientras
+    
+    Retornar inv
+  Fin
+
+Logico Accion obtenerCapicua(Entero n)
+  DV
+    Entero inv
+    Logico resp
+  Inicio
+    inv <- inverso(n) 
+    Si inv = n Entonces
+      resp <- Verdadero
+   Sino 
+      resp <- Falso
+   Fsi
+   Retornar resp
+  Fin
+
+

@@ -1,0 +1,77 @@
+// 6.- Dado un número entero; determinar si el mismo es par, impar o cero.
+
+//Ponemos el 0 al inicio para evitar confusiones con las condiciones de paridad.
+
+Accion HallarNumeroParImparCero
+
+Entero numero //Entrada
+Cadena mensaje //Salida
+
+Inicio
+
+Leer(numero) 
+
+Si numero = 0 Entonces 
+    mensaje <- "cero"
+Sino
+    numero mod 2 == 0 Entonces
+        mensaje <- "par"
+    Sino    
+        mensaje <- "impar"
+    Fsi
+Fsi
+
+Escribir(mensaje)
+
+Fin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*********************** INCORRECTO ***************************
+Accion HallarNumeroParImparCero
+
+Entero numero //Entrada
+Entero par, impar, 0 //Salida
+
+Leer(numero)
+
+Si numero mod == 2 Entonces 
+    numero <- par
+Sino 
+    Si numero mod != 2 Entonces
+        numero <- impar
+    Sino 
+        numero <- 0
+    Fsi
+Fsi
+
+Escribir(par, impar, 0)
+
+Fin

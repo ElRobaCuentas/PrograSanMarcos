@@ -1,0 +1,34 @@
+//2.- Una compañía de alquiler de autos emite la factura de sus clientes teniendo en cuenta la
+distancia recorrida, si la distancia no rebasa los 300 km., se cobra una tarifa fija de S/.250, si
+la distancia recorrida es mayor a 300 km. y hasta 1000 km. se cobra la tarifa fija, más el
+exceso de kilómetros a razón de S/. 30 por km. y si la distancia recorrida es mayor a 1000
+km. la compañía cobra la tarifa fija más los kms. recorridos entre 300 hasta 1000 a razón de
+S/. 30, más S/.20 por Km. de exceso en distancias mayores de 1000 km. Calcular el monto
+que pagará un cliente.
+
+Accion CalcularMontoTotal
+
+Real distanciaRecorrida // Entrada
+Real tarifaFija //Auxiliar
+Real montoTotal //Salida
+
+Inicio 
+
+Leer(distanciaRecorrida)
+
+tarifaFija <- 250
+
+Si distanciaRecorrida <= 300 Entonces 
+    montoTotal <- tarifaFija
+Sino 
+    Si distanciaRecorrida <= 1000 Entonces  
+        montoTotal <- tarifaFija + (distanciaRecorrida - 300)*30
+    Sino   
+        montoTotal <- tarifaFija + 700*30 + (distanciaRecorrida - 1000)*20 
+    Fsi
+Fsi
+
+Escribir(montoTotal)
+
+Fin
+

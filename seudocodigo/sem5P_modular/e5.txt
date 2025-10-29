@@ -1,0 +1,27 @@
+4. Escribe un subprograma que reciba dos números enteros positivos y devuelva su
+producto calculado usando sólo sumas.
+
+//Prototipo
+Entero Accion sumaT(Entero a, Entero b)
+
+Accion Principal 
+  DV
+    Entero a,b //E
+    Entero suma //S
+  Inicio
+    Leer(a,b)
+    suma <- sumaT(a, b)
+    Escribir(suma)
+  Fin
+
+Entero Accion sumaT(Entero a, Entero b)
+  DV
+    Entero suma, i
+  Inicio
+    suma <- 0
+    Para i desde 1 hasta b Hacer
+      suma <- suma + a 
+    FPara
+    Retornar suma
+  Fin
+

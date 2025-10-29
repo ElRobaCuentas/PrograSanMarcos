@@ -1,0 +1,28 @@
+7. Escriba subprograma que halle la cantidad de divisores de un número entero
+positivo.
+
+//Prototipo
+Entero Acción CantidadDivisores (Entero n)
+
+Acción Principal
+  DV
+    Entero n //E
+    Entero cantidad //S
+  Inicio
+    Leer(n)
+    cantidad <- CantidadDivisores(n)
+    Escribir(cantidad)
+  Fin
+
+Entero Acción CantidadDivisores (Entero n)
+  DV
+    Entero i, cont
+  Inicio
+    cont <- 0
+    Para i desde 1 hasta n Hacer
+      Si (n mod i = 0) Entonces
+        cont <- cont + 1
+      FSi
+    FinPara
+    Retornar cont
+Fin

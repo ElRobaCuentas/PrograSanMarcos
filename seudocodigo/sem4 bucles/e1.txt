@@ -1,0 +1,25 @@
+1.- Leer un número entero N y calcule e imprima su factorial N!
+
+Explicacion: El resultado comienza en 1 porque cualquiero numero multiplicado por 1 es el mismo.
+5! 1*2*3*4*5
+La logica es que, el primer valor es 1.
+
+1*1 = 1 -> este valor se almacena en factorial
+1*2 = 2 -> este valor se almacena en factorial
+2*3 = 6 -> este valor se almacena en factorial
+6*4 = 24 -> este valor se almacena en factorial
+24*5 0 120 -> este valor se almacena en factorial
+
+Accion CalcularFactorialNumero
+Entero n //E
+Entero i//Auxiliar
+Entero factorial //S
+Inicio
+    Leer(n)
+    factorial <- 1
+    Para i desde 1 hasta n Hacer
+        factorial <- factorial * i
+    FinPara
+    Escribir(factorial)
+Fin
+

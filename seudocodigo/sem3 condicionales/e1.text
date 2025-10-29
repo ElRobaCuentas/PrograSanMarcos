@@ -1,0 +1,42 @@
+
+// 1.- Calcular el pago semanal de un trabajador. Los datos a ingresar son: Total de horas trabajadas y el pago por hora.
+Si el total de horas trabajadas es mayor a 40 la diferencia se considera como horas extras y se paga un 50% más que una hora normal.
+Si el sueldo bruto es mayor a s/. 5000.00, se descuenta un 10% en caso contrario el descuento es 0.
+
+Explicacion: 
+    A partir de la hora 41 se considera horas extras.
+    El sueldo bruto es el sueldo que no considera el descuento.
+    Al decir 50% mas se condisera un 150%.
+
+Accion CalcularPagoSemanal
+
+Real horasT, pagoH                        //Entrada
+Real sueldoBruto, descuento, horasExtras  //Auxiliares
+Real sueldoNeto	                          //Salida
+
+
+Leer(horasT, pagoH)  
+
+Si horasT <= 40 Entonces 
+    sueldoBruto <- horasT*pagoH
+Sino 
+    horasExtras <- horasT - 40 // ponte que es 41, entonces las horas extras son 41 - 40 = 1
+    sueldoBruto <- 40*pagoH + 1.5*horasExtras* //si yo pongo 45 en horasT, entonces horasT = 45, por ende, 45*10 + 1.5*5*10; ese 45*10 esta mal, deberia ser 40*10, constante.
+FSi
+
+Si sueldoBruto > 5000 Entonces
+    descuento <- sueldoBruto * 0.1
+Sino
+    descuento <- 0 
+Fsi
+
+SueldoNeto = sueldoBruto - descuento
+
+Escribir(sueldoNeto)
+
+
+
+
+
+
+ 

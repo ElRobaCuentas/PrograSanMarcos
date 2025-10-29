@@ -1,0 +1,42 @@
+Hallar la suma de n terminos. 
+
+//Prototipo
+Entero Accion factorialDenom(Entero n)
+Real Accion sumaTotal(Entero n)
+
+Accion Principal
+DV
+  Entero n //E
+  Real suma //S
+
+Inicio 
+  Leer(n)
+  suma <- sumaTotal(n)
+  Escribir(suma)
+Fin
+
+Entero Accion factorialDenom(Entero n)
+DV
+  Entero i, factorial
+Inicio
+  factorial <- 1
+  Para i desde 1 hasta n Hacer
+  factorial <- factorial * i
+  FinPara
+  
+  Retornar factorial
+Fin
+
+Real Acción sumaTotal (Entero n)
+DV
+    Real   suma, num
+    Entero i
+Inicio
+    suma <- 0
+    Para i desde 1 hasta n Hacer
+        suma <- suma + num 
+        num <- 1 / factorialDenom(i) 
+    FinPara
+    retornar suma
+Facción
+

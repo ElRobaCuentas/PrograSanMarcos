@@ -1,0 +1,39 @@
+2.- Construir un seudocódigo que determine la potencia de m^n siendo m un número real y n un número entero. 
+Considere que n sólo puede ser positivo o cero.
+
+Explicacion: 
+- Sería lo más correcto usar Para, debido a que sé cuántas veces voy a multiplicar m exactamente n veces. 
+- n sólo puede ser positivo o cero (n >= 0)
+- m^n : m*m*m*m*m*m ... n veces. 
+- que n = 0, quiere decir potencia <- m^0 = 1  y esto siempre va a ser 1, no hay necesidad de que sea un bucle. ...(I)
+- que n > 0, quiere decir m elevado a cualquier numero desde 1 hasta ... y ahi si es para hacer bucle. 
+
+Accion determinarPotencia
+
+Real m //Entrada
+Entero n //Entrada
+Real potencia //Salida
+
+Inicio
+    Leer(m,n)
+
+    potencia <- 1 // (I)
+
+    //por ejemplo, m = 3, n = 5 entonces esto será 3*3*3*3*3. Primero 1*3, luego 3*3, luego 3*3*3
+    Para i desde 1 hasta n Hacer
+        potencia = potencia * m
+            /*
+                            potencia = 1*3 = 3
+                para i = 1  potencia = 3*3 = 9
+                para i = 2  potencia = 9*3 = 27
+                ...
+                para i = 6 ... sale del bucle.
+            */
+    FinPara
+
+    Escribir(potencia)
+Fin
+
+
+
+

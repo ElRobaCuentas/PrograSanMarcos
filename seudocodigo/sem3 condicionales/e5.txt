@@ -1,0 +1,47 @@
+//
+5.- Calcular la utilidad que un trabajador recibe en el reparto anual de utilidades si este se le
+asigna como un porcentaje de su salario mensual que depende de su antigüedad (años
+cumplidos) en la empresa de acuerdo con la siguiente tabla:
+
+Tiempo                                  Utilidad
+Menos de 1 año                          0% del salario
+1 año                                   5 % del salario
+2 años                                  7% del salario
+Más de 2 años y menos de 5 años         10% del salario
+5 años o más y menos de 10 años         15% del salario
+10 años o más                           20% del salario
+
+Accion HallarUtilidadTrabajador
+
+Real tiempo, salario //Entrada
+Real utilidad //Salida
+
+Inicio 
+
+Leer(salario, tiempo)
+
+Si tiempo < 1 Entonces 
+    utilidad <- 0*salario
+Sino 
+    Si tiempo = 1 Entonces
+        utilidad <- 0.05*salario
+    Sino 
+        Si tiempo == 2 Entonces 
+            utilidad <- 0.07*salario
+        Sino 
+            Si tiempo > 2 Y tiempo < 5
+                utilidad <- 0.1*salario
+            Sino 
+                Si tiempo < 10
+                    utilidad <- 0.15*salario
+                Sino
+                    utilidad <- 0.2*salario
+                Fsi
+            Fsi
+        Fsi
+    FSi
+Fsi
+
+Escribir(utilidad)
+
+Fin

@@ -1,0 +1,28 @@
+6. Escriba subprograma que permita hallar el valor absoluto de un número entero.
+
+//Prototipo
+Entero Accion valorAbs(Entero n)
+
+Accion Principal
+  DV
+    Entero n //E
+    Entero valAb //S
+
+  Inicio
+    Leer(n)
+    valAb <- valorAbs(n)
+    Escribir(valAb)
+  Fin
+
+Entero Accion valorAbs(Entero n)
+  DV
+    Entero num
+  Inicio
+    Si n < 0 
+      num <- n * -1
+    Sino 
+      num <- n
+    FSi
+    Retornar num
+  Fin
+

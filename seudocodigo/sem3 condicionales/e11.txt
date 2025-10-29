@@ -1,0 +1,71 @@
+11.- En un hospital se ha hecho un estudio sobre los pacientes registrados durante los últimos 10 años, con el objeto de hacer una 
+aproximación de los costos de internamiento por paciente. Se obtuvo un costo promedio diario según el tipo de enfermedad que aqueja 
+al paciente, además se pudo determinar que en promedio todos los pacientes con edad entre 14 y 22 años implican un costo adicional 
+del 10%. La siguiente tabla expresa los costos diarios según el tipo de enfermedad.
+
+TIPO DE ENFERMEDAD                 COSTO
+        0                           25
+        1                           16
+        2                           20
+        3                           32
+
+Calcular e imprimir el costo diario que representa un paciente. //SOLO UN PACIENTE
+
+Explicacion: 
+    Costo promedio -> diario != Costo promedio -> 14 y 22 años
+    El 10% adicional depende de que tengan entre 14 y 22 años
+
+Accion CalcularCostoTotalDiario
+
+Caracter tipoE //Entrada
+Entero edad //Entrada
+Entero costoPaciente //Auxiliar
+Real costoTotal //Salida
+
+Leer(tipoE, edad)
+
+Case tipoE Vale
+'0' : costoPaciente <- 25
+'1' : costoPaciente <- 16
+'2' : costoPaciente <- 20
+'3' : costoPaciente <- 32
+FCaso
+
+Si edad >= 14 Y edad <= 22 Entonces 
+    costoTotal <- costoTotal * 1.10
+Sino
+    costoTotal <- costoPaciente //no es 0, sino seria cualquier que esté en la tabla
+Fsi
+
+Escribir (costoTotal)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Entero cantidadPacientes, edad //Entrada
+Entero costoTotalDiario        //Salida
+
+Real costoAdicional            //Auxiliar
+Entero costoProm               //Auxiliar
+Caracter tipoEnfermedad        //Auxiliar
+
+Leer (cantidadPacientes, edad)
+
+Case tipoEnfermedad Vale
+    '0' : costoProm <- 25*cantidadPacientes
+    '1' : costoProm <- 16*cantidadPacientes
+    '2' : costoProm <- 20*cantidadPacientes
+    '3' : costoProm <- 32*cantidadPacientes
+FCaso
+
+Si edad >= 14 Y  edad<= 22 Entonces 
+    costoAdicional

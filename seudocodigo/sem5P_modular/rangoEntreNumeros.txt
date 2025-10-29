@@ -1,0 +1,29 @@
+5. Implementa un subprograma que reciba dos valores de tipo Entero. El subprograma
+pedirá la introducción de un número entero a través del teclado, tantas veces como
+sea necesario, hasta que el número suministrado se encuentre en el intervalo
+determinado por los datos de entrada. Una vez validado el número leído, el
+subprograma lo devolverá.
+
+//Prototipo
+Entero Accion intervalo(Entero a, Entero b)
+
+Accion Principal
+  DV
+    Entero a,b //E
+    Entero num //S
+  Inicio 
+    Leer(a,b)
+    num <- intervalo(a, b)
+    Escribir(num)
+  Fin
+
+Entero Accion intervalo(Entero a, Entero b)
+  DV
+    Entero n //E - S
+  Inicio
+    Hacer
+      Leer(n)
+    Mientras n < a O n > b
+    Escribir(n)
+    Retornar n 
+  Fin

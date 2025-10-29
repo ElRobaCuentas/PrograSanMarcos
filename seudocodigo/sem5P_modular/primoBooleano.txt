@@ -1,0 +1,43 @@
+8. Escriba subprogramas necesarios para saber si un número es primo o no. El resultado
+debe ser un valor lógico (V o F).
+
+//Prototipo
+Entero Accion primo(Entero n)
+Logico Accion esPrimo(Entero n)
+
+Accion Principal 
+DV
+  Entero n //E
+  Logico p //S
+Inicio 
+  Leer(n)
+  p <- esPrimo(n)
+  Escribir(p)
+Fin
+
+Logico Accion esPrimo(Entero n)
+DV
+  Entero cont
+  Logico p
+Inicio 
+  cont <- primo(n)
+  Si cont = 2 Entonces
+    p <- Verdadero
+  Sino 
+    p <- Falso
+  Fsi
+  Retornar p
+Fin
+
+Entero Accion primo(Entero n)
+DV
+  Entero i, cont
+Inicio
+  cont <- 0
+  Para i desde 1 hasta n Hacer
+    Si n MOD i = 0
+      cont <- cont + 1
+    Fsi
+  FPara
+  Retornar cont
+Fin

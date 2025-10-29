@@ -1,0 +1,36 @@
+//8.- Ingrese seis notas y calcule el promedio, considerando las 5 mejores notas.
+
+Explicacion: 
+- considerar las 5 mejores notas es lo mismo que descartar la menor.
+- actualizar la menor nota con condicionales
+suma = n1 + n2 + n3 + n4 + n5 + n6
+Suma de las 5 mejores = Suma - n1 (suponiendo que n1 es la menor)
+Promedio de las 5 mejores = (suma - n1) / 5
+
+
+Accion CalcularPromedioNotas
+
+Real n1, n2, n3, n4, n5, n6 //E
+Real suma, menor //Auxiliares
+Real promedio //S
+
+Inicio
+
+Leer(nota1, nota2, nota3, nota4, nota5, nota6)
+
+suma <- n1 + n2 + n3 + n4 + n5 + n6
+
+//inicializamos
+menor <- n1
+Si n2 < menor Entonces menor <- n2 FSi
+Si n3 < menor Entonces menor <- n3 FSi
+Si n4 < menor Entonces menor <- n4 FSi
+Si n5 < menor Entonces menor <- n5 FSi
+Si n6 < menor Entonces menor <- n6 FSi
+//Al terminar, menor guarda la nota mas baja de las seis notas.
+
+promedio <- (suma - menor) / 5
+
+Escribir(promedio)
+
+

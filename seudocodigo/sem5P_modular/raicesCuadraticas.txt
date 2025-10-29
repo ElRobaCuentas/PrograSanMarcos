@@ -1,0 +1,31 @@
+1. Hallar las raices de una ecuacion cuadratica.
+
+//Prototipo
+Real Accion hallarDiscrim(real a, real b, real c)
+Accion hallarRaices(real coef1, real coef2, real coef3, real &raiz1, real &raiz2)
+
+Accion Principal
+   DV
+     Real coef1, coef2, coef3 //E
+     Real r1, r2 //S
+   Inicio
+     Leer(coef1, coef2, coef3)
+     hallarRaices(coef1, coef2, coef3, r1, r2)
+     Escribir(r1, r2)
+    Fin
+
+    Real Accion hallarDiscrim(real a, real b, real c)
+        DV
+          Real d
+        Inicio 
+          d <- b * b - 4*a*c
+          retornar d
+        Fin
+    Accion hallarRaices(real coef1, real coef2, real coef3, real &raiz1, real &raiz2)
+        DV 
+          Real d
+        Inicio
+          d <- hallarDiscrim(a,b,c)
+          raiz1 <- (-b + d ** 0.5) / (2*a)
+          raiz2 <- (-b - d ** 0.5) / (2*a)
+        Fin

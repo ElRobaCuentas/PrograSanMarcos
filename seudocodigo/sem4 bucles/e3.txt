@@ -1,0 +1,22 @@
+3.- Se lanza un dado reiteradas veces hasta que el valor del tiro es 1. Determinar la cantidad de veces que se lanzó el 
+dado y el puntaje acumulado, si lo que se acumula es el valor del tiro.
+
+Explicacion: Es un Hacer...While
+En este problema no hay una entrada directa del usuario, ya que no se cuantas veces voy a tirar el dado, en realidad,
+la "entrada" seria el valor obtenido por cada lanzamiento. Es decir...
+    1. Se lanza un dado varias veces
+    2. Cada lanzamiento tiene un valor del 1 al 6
+    3. El proceso termina hasta que ese valor sea 1
+    4. Mientras tanto, voy a ir acumulando la suma de los valorers obtenidos
+Al final debemos mostrar la cantidad de lanzamientos y el puntaje acumulado. 
+
+Accion HallarCantidadPuntaje
+
+Entero valorDado //E
+Entero cantidadLanzamientos, puntajeAcumulado//S 
+
+Incio 
+    Hacer  
+    valorDado 
+
+

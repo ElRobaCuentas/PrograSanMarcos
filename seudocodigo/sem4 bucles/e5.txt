@@ -1,0 +1,78 @@
+5.- El Dpto. de Tránsito y Seguridad Vial desea saber de los “n” autos que entran a la ciudad
+de Lima, cuantos entran con calcomanía de cada color. Conociendo el último dígito de la
+placa (considerar como número entero) de cada automóvil se puede determinar el color de
+la calcomanía utilizando la siguiente relación: 
+
+Dígito  Color
+1 o 2   Amarilla.
+3 o 4   Rosa
+5 o 6   Roja
+7 o 8   Verde
+9 o 0   Azul
+
+Explicacion: La idea es: el Para repite 3 veces y cada vuelta lees el último dígito del auto actual 
+(puede ser distinto en cada auto). Por eso ultimo cambia en cada iteración: porque lees un dato nuevo.
+
+Supongamos que las personas te dicen estos últimos dígitos, en este orden: 2, 8, 0.
+
+Estado inicial
+i no existe aún (lo iniciará el Para).
+Contadores: amarilla=0, rosa=0, roja=0, verde=0, azul=0.
+
+Iteración 1
+i = 1 (el Para inicia en 1)
+Lees ultimo = 2
+Case ultimo Vale:
+1,2 → amarilla++
+Contadores → amarilla=1, rosa=0, roja=0, verde=0, azul=0
+Fin del cuerpo → el Para hace i ← i + 1 ⇒ ahora i = 2
+
+Iteración 2
+i = 2
+Lees ultimo = 8
+Case ultimo Vale:
+7,8 → verde++
+Contadores → amarilla=1, rosa=0, roja=0, verde=1, azul=0
+Fin del cuerpo → i = 3
+
+Iteración 3
+i = 3
+Lees ultimo = 0
+Case ultimo Vale:
+9,0 → azul++
+Contadores → amarilla=1, rosa=0, roja=0, verde=1, azul=1
+Fin del cuerpo → i = 4
+
+Chequeo final del Para
+¿i <= n? → ¿4 <= 3? No → termina el bucle.
+Resultado final
+Amarilla: 1
+Rosa: 0
+Roja: 0
+Verde: 1
+Azul: 1
+
+
+Accion CalcularCantidadAutos
+
+Entero n, digito //Entrada
+Entero i
+Entero amarillo, rosa rojo, verde, azul //Salida
+
+Inicio
+    Leer(n)
+    Para i desde 1 hasta n Hacer 
+        Case digito Vale   
+            1,2: amarrilo <- amarillo + 1 
+            3,4: rosa <- rosa + 1 
+            5,6: rojo <- rojo + 1 
+            7,8: verde <- verde + 1 
+            9,0: azul <- azul + 1 
+        FCase
+    FinPara
+
+    Escribir(amarillo, rosa rojo, verde, azul)
+Fin
+
+
+

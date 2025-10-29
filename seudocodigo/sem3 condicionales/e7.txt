@@ -1,0 +1,31 @@
+//7.- Determinar la cantidad de dinero que recibirá un trabajador por concepto de las horas
+extras trabajadas en una empresa, sabiendo que cuando las horas de trabajo exceden de 40,
+el resto se consideran horas extras y que estas se pagan al doble de una hora normal cuando
+no exceden de 8; si las horas extras exceden de 8 se pagan las primeras 8 al doble de lo que
+se pagan las horas normales y el resto al triple.
+
+Explicacion:
+El pago es solo por horas extras, las condiciones del problema solo me mencionan eso.
+No hay necesidad de poner las horasNormales (horas trabajado, obvio mayores que 40 para despues sacar por difenrencia las horas extra.)
+
+Accion CalcularPagoHorasExtras
+
+Entero horasExtra, pagoHoraNormal //Entrada
+Real pagoextras//Salida
+
+Inicio
+
+Leer(horasExtra, pagoHoraNormal)
+
+Si horasExtra <= 0 Entonces 
+    pagoextras <- 0
+Sino 
+    Si horasExtra <= 8 Entonces
+        pagoExtras <- horasExtras*pagoHoraNormal*2
+    Sino  //aca las horas ya son mayores que 8, entonces para hallar esa diferencia, resto horasExtra - 8
+        pagoExtras <- 8*2*pagoHoraNormal + (horasExtras - 8)*pagoHoraNormal*3
+    Fsi
+Fsi
+
+Escribir (pagoExtras)
+
