@@ -1,0 +1,123 @@
+1.- En una empresa, existen productos de m tipos distribuidos en n diferentes
+almacenes. Calcular la cantidad de productos que existen en cada almacén, la
+cantidad de productos de cada tipo y la cantidad total de productos de todos los
+tipos en todos los almacenes. Ingresar los datos en una matriz y presentar como
+resultado la matriz ingresada acompañada de los totales requeridos. Considerar un
+máximo de 20 almacenes y 15 tipos de productos diferentes por almacén, Deben
+ingresarse el número de almacenes, el número de tipos de producto y la cantidad
+de productos por cada tipo en cada almacén.
+
+//será una matriz de nxm -> n = filas y m = columnas
+n -> almacen / m -> tipos
+
+//Prototipos
+Accion llenarM(Entero prod[][15], Entero n, Entero m)
+Accion cantProAlmacen(Entero prod[][15], Entero n, Entero m, Entero totalAlmacen[])
+Accion cantProTipo(Entero prod[][15], Entero n, Entero m, Entero totalTipo[])
+Entero Accion totalGeneral(Entero totalAlmacen[], Entero n)
+Accion mostrarMatriz(Entero prod[][15], Entero n, Entero m)
+Accion mostrarCantAlmacen(Entero totalAlmacen[], Entero n)
+Accion mostrarCantTipo(Entero totalTipo[], Entero m)
+
+Accion Principal
+DV
+  Entero n, m
+  Entero prod[20][15]
+  Entero totalAlmacen[20], totalTipo[15]
+  Entero tGeneral
+Inicio
+  Leer(n, m)
+  llenarM(prod, n, m)
+  cantProAlmacen(prod, n, m, totalAlmacen)
+  cantProTipo(prod, n, m, totalTipo)
+  tGeneral <- totalGeneral(totalAlmacen, n)
+
+  mostrarMatriz(prod, n, m)
+  mostrarCantAlmacen(totalAlmacen, n)
+  mostrarCantTipo(totalTipo, m)
+  Escribir(tGeneral)
+Fin
+
+
+Accion llenarM(Entero prod[][15], Entero n, Entero m)
+DV
+  Entero i, j
+Inicio
+  Para i desde 1 hasta n Hacer
+    Para j desde 1 hasta m Hacer
+      Leer(prod[i][j])
+    FPara
+  FPara
+Fin
+
+
+Accion cantProAlmacen(Entero prod[][15], Entero n, Entero m, Entero totalAlmacen[])
+DV
+  Entero i, j, suma
+Inicio
+  Para i desde 1 hasta n Hacer
+    suma <- 0
+    Para j desde 1 hasta m Hacer
+      suma <- suma + prod[i][j]
+    FPara
+    totalAlmacen[i] <- suma
+  FPara
+Fin
+
+
+Accion cantProTipo(Entero prod[][15], Entero n, Entero m, Entero totalTipo[])
+DV
+  Entero i, j, suma
+Inicio
+  Para j desde 1 hasta m Hacer
+    suma <- 0
+    Para i desde 1 hasta n Hacer
+      suma <- suma + prod[i][j]
+    FPara
+    totalTipo[j] <- suma
+  FPara
+Fin
+
+
+Entero Accion totalGeneral(Entero totalAlmacen[], Entero n)
+DV
+  Entero i, suma
+Inicio
+  suma <- 0
+  Para i desde 1 hasta n Hacer
+    suma <- suma + totalAlmacen[i]
+  FPara
+  Retornar suma
+Fin
+
+
+Accion mostrarMatriz(Entero prod[][15], Entero n, Entero m)
+DV
+  Entero i, j
+Inicio
+  Para i desde 1 hasta n Hacer
+    Para j desde 1 hasta m Hacer
+      Escribir(prod[i][j])
+    FPara
+  FPara
+Fin
+
+
+Accion mostrarCantAlmacen(Entero totalAlmacen[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta n Hacer
+    Escribir(totalAlmacen[i])
+  FPara
+Fin
+
+
+Accion mostrarCantTipo(Entero totalTipo[], Entero m)
+DV
+  Entero j
+Inicio
+  Para j desde 1 hasta m Hacer
+    Escribir(totalTipo[j])
+  FPara
+Fin

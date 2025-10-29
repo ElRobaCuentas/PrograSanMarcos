@@ -1,0 +1,152 @@
+///PROBLEMA 3.- Elabore una solución que busque un valor dentro de un arreglo de números ENTEROS de
+tamaño N (máximo 50), donde el valor a buscar y N son ingresados por el usuario.
+Mostrar el índice de la posición que tiene en el arreglo
+
+//Prototipos
+Accion llenarV(Entero v[], Entero n)
+Entero Accion buscarValor(Entero v[], Entero n)
+
+Accion Principal
+DV
+  Entero n, v[50], u//E
+Inicio
+  Leer(n)
+  llenarV(v, n)
+  buscarValor(v, n)
+Fin
+
+Accion llenarV(Entero v[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 a n Hacer
+    Leer(v[i])
+  FPara
+Fin
+
+Accion buscarValor(Entero v[], Entero n) //el valor de "valor" es lo que voy a buscar. En llenarV[] solo doy la cantidad de eleentos y lleno el arreglo
+DV
+  Entero i, ubic, valor
+Inicio
+  Leer(valor) //para buscar el valor y ver si coincide //11
+  ubic <- 0
+  Para i desde 1 a n Hacer
+    Si v[i] = valor Entonces
+      ubic <- i //va a entrar aca, si y solo si el valor ingresado por el usuario coindice con el valor del vector, tambien ingresado por el usuario 
+    FSi
+  FPara
+Fin
+
+//para n = 4, los valores que ingrese son: 14, 11, 13, 12
+Si se da que v[2] = 11 (condicion)
+entonces en el indice 2 esta el 11. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+DUDAS
+
+1. Ubic es una variable local, es decir, ubic desaparece ahi, no va a mostrar nada en principal. 
+Ademas, ubic almacena un resultado, entonces deberia ser funcion, no procedimiento.
+
+2. ¿Pongo a valor como parametro o como variable local? Como parametro, ya que valor es una precondicion, es decir necesita el un valor 
+entero cualesquiera, que representa el valor a buscar. 
+
+
+EL VALOR A BUSCAR SE ENCUENTRA DENTRO DEL ARREGLO
+
+
+EL QUE ESTA BIEN
+
+//Prototipos
+Accion llenarV(Entero v[], Entero n)
+Entero Accion buscarValor(Entero v[], Entero n, Entero valor)
+Accion mostrarMensaje(Entero u)
+
+Accion Principal
+DV
+  Entero n, v[50], valor//E
+  Entero u //S
+Inicio
+  Leer(n, valor)
+  llenarV(v, n)
+  u <- buscarValor(v, n)
+  mostrarMensaje(u)
+Fin
+
+Accion llenarV(Entero v[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 a n Hacer
+    Leer(v[i])
+  FPara
+Fin
+
+Entero Accion buscarValor(Entero v[], Entero n, Entero valor) //el valor de "valor" es lo que voy a buscar. En llenarV[] solo doy la cantidad de eleentos y lleno el arreglo
+DV
+  Entero i, ubic
+Inicio
+  ubic <- 0
+  Para i desde 1 a n Hacer
+    Si v[i] = valor Entonces
+      ubic <- i //va a entrar aca, si y solo si el valor ingresado por el usuario coindice con el valor del vector, tambien ingresado por el usuario 
+    FSi
+  FPara
+  Retornar ubic
+Fin
+
+EN EL CASO DE QUE EL VALOR PUESTO POR EL USUARIO NO ESTE DENTRO DEL ARREGLO.
+
+ubic <- -1
+
+si no hay coincidencia, nunca va a entrar al Para, entonces se va a quedar con -1
+Entero Accion buscarValor(Entero v[], Entero n, Entero valor) 
+DV
+  Entero i, ubic
+Inicio
+  ubic <- -1
+  Para i desde 1 a n Hacer
+    Si v[i] = valor Entonces
+      ubic <- i 
+  FPara
+  Retornar ubic
+Fin
+
+******************************************************************************************************
+
+pero no hay indice -1, en caso de que no entre al Para, entonces, tenemos que comprar. (2 posibilidades)
+
+Accion mostrarMensaje(Entero u)
+Inicio
+  Si u = -1 Entonces
+    Escribir("Valor no encontrado")
+  Sino
+    Escribir(u)
+  FSi
+FAccion
+
+**************************************************************************************************************
+
+En principal solo va entradas y salidas simples.
+leer se encarga de ingresar el dato del usuario del valor, por que deberia ser un programa? 
+/*
+Entero Accion leerValor(Entero numeros[], Entero n)
+DV
+  Entero valor
+Inicio
+  Leer(valor)
+  Retornar valor
+FinAccion
+*/ YA EXISTE, SOLO NECESITO INGRESAR UN VALOR.
+
+Entero Accion mostrarIndice(Entero numeros[], Entero n, Entero valor)
+DV
+  Entero i
+Inicio
+  Para i de 1 a n Hacer
+	Si numeros[i] = valor Entonces
+		Retornar(i) //TERMINAR UNA SOLUCION EN MEDIO DE SU RECORRIDO NO SE CONDIDERA PROGRAMACION MODULAR
+	FinSi
+  FinPara
+  Retornar 0
+FinAccion
+

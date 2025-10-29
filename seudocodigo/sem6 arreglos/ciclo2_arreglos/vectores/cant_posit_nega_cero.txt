@@ -1,0 +1,134 @@
+Ingresar n valores enteros a un arreglo (máximo 10). Mostrar cantidad de positivos,
+negativos y cero.
+
+//Prototipos
+Acción llenarV(Entero numeros[ ], Entero n)
+Accion mostrarV(Entero numeros[], Entero n)
+Entero Acción contarNeg(Entero numeros[ ], Entero n)
+Entero Acción contarPos(Entero numeros[ ], Entero n)
+Entero Acción contarO(Entero numeros[ ], Entero n)
+
+*********************************************************************************************
+Accion contarTodo(Entero numeros[], Entero n, Entero &nega, Entero &posi, Entero &cero)
+*********************************************************************************************
+
+Accion Principal
+DV 
+  Entero n, notas[10] //E
+  Entero nega, posi, cero //S
+Inicio 
+  Leer(n)
+  llenarV(numeros, n)
+  neg <- contarNeg(numeros, n)
+  posi <- contarPos(numeros, n)
+  cero <- contarO(numeros, n)
+  mostrarV(numeros, n)
+  Escribir(neg, posi, cero)
+Fin
+
+
+//
+Inicio
+  Leer(n)
+  llenarV(numeros, n)
+  contarTodo(numeros, n, nega, posi, cero)
+  mostrarV(numeros, n)
+  Escribir(nega, posi, cero)
+Fin
+//
+
+Acción llenarV(Entero numeros[ ], Entero n)
+DV
+  Entero i 
+Inicio 
+  Para i desde 1 hasta n Hacer  
+    Leer(notas[i])
+  FPara
+Fin
+
+Accion mostrarV(Entero numeros[], Entero n)
+DV
+  Entero i 
+Inicio 
+  Para i desde 1 hasta n Hacer  
+    Escribir(notas[i])
+  FPara
+Fin
+
+Entero Acción contarNeg(Entero numeros[ ], Entero n)
+DV
+  Entero i, cont
+Inicio 
+  cont <- 0
+  Para i desde 1 hasta n Hacer
+    Si notas[i] < 0 Entonces
+     cont <- cont + 1
+    FSi
+  FPara
+  Retornar cont
+Fin
+      
+Entero Acción contarPos(Entero numeros[ ], Entero n)
+DV
+  Entero i, cont
+Inicio 
+  cont <- 0
+  Para i desde 1 hasta n Hacer
+    Si notas[i] > 0 Entonces
+     cont <- cont + 1
+    FSi
+  FPara
+  Retornar cont
+Fin
+
+Entero Acción contarO(Entero numeros[ ], Entero n)
+DV
+  Entero i, cont
+Inicio 
+  cont <- 0
+  Para i desde 1 hasta n Hacer
+    Si notas[i] = 0 Entonces
+     cont <- cont + 1
+    FSi
+  FPara
+  Retornar cont
+Fin
+
+
+
+*************************************************************************************************
+
+//PARA AHORRAR CODIGO PUEDO HACER LOS 3 SUBPROGRAMAS EN UNO SOLO
+
+1. //Como "Entero &nega, Entero &posi, Entero &cero" son parametros por referencia, es decir, 
+   //estos cambios en las variables afectan a las variables originales del main
+   //Entonces, si dentro del procedimiento haces: 
+   posi <- posi + 1 (Se está modificando la variable del programa principal), no una copia local. 
+   ESTOS SE ENVIAN POR REFERENCIA PORQUE QUEREMOS QUE ESOS CAMBIOS SE REFLEJEN AFUERA, EN EL main. 
+
+2. //Respecto a los nombres: 
+  - main() ...
+    Variables locales, nombres que tu gustes. 
+  - contarTodo() ...
+    Variables locales, nombres que tu gustes. 
+  --Entero p, n, c //No deben de "redeclararse posi, nega, cero" porque ya vienen como parametros
+
+Accion contarTodo(Entero numeros[], Entero n, Entero &n, Entero &p, Entero &c)
+DV
+  Entero i
+Inicio
+  n <- 0 
+  p <- 0
+  c <- 0
+  Para i desde 1 hasta n Hacer  
+    Si notas[i] < 0 Entonces 
+      neg <- neg + 1
+    Sino 
+      Si notas[i] > 0 Entonces 
+        pos <- pos + 1
+      Sino
+        cer <- cer + 1
+      FSi
+    FSi
+  FPara
+Fin

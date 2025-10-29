@@ -1,0 +1,178 @@
+En una matriz de m x n (máximo 50 x 50), almacenar cantidades
+de tablets vendidas. Se pide:
+a. Hallar el promedio de ventas
+b. Mostrar cuántas ventas son mayores que el promedio.
+
+Aclaro que "m" funciona como f(filas) y "n" funciona como c(columnas)
+
+//Prototipos
+Accion llenarM(Entero ma[][50], Entero m, Entero n)
+Real Accion promVentas(Entero ma[][50], Entero m, Entero n)
+Entero Accion ventasMayoresProm(Entero ma[][50], Entero m, Entero n, Real prom)
+Accion mostrarM(Entero ma[][50], Entero m, Entero n)
+
+Accion Principal 
+DV
+  Entero m, n, ma[50][50] //E
+  Real prom //S
+  Entero ventas //S
+Inicio
+  Leer(m, n)
+  llenarM(ma, m, n)
+  prom <- promVentas(ma, m, n)
+  ventas <- ventasMayoresProm(ma, m, n, prom)
+  Escribir(prom, ventas)
+Fin
+
+Accion llenarM(Entero ma[][50], Entero m, Entero n)
+DV
+  Entero i, j
+Inicio
+  Para i desde 1 hasta m Hacer
+    Para j desde 1 hasta n Hacer
+      Leer(ma[i][j])
+    FPara
+  FPara
+Fin
+
+Real Accion promVentas(Entero ma[][50], Entero m, Entero n)
+DV
+  Entero i, j, sum
+  Real promedio
+Inicio
+  sum <- 0 
+  Para i desde 1 hasta m Hacer
+    Para j desde 1 hasta n Hacer
+      sum <- sum + ma[i][j]
+    FPara
+  FPara
+  prom <- sum/(m*n)
+  Retornar prom
+Fin
+
+Entero Accion ventasMayoresProm(Entero ma[][50], Entero m, Entero n, Real prom)
+DV 
+  Entero i, j, cont
+Inicio 
+  Para i desde 1 hasta m Hacer
+    Para j desde 1 hasta n Hacer
+      Si ma[i][j] > prom Entonces  
+        cont <- cont + 1
+      FSi
+    FPara
+  FPara
+  Retornar cont
+Fin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

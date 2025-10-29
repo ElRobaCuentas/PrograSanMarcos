@@ -1,0 +1,117 @@
+Empleando arreglos y programación modular, elabore la solución para el siguiente problema:
+Ingresar n valores enteros a un arreglo (máximo 50). Mostrar cantidad de primos.
+
+
+//Prototipos
+Accion llenarV(Entero numeros[], Entero n)
+//Accion mostrarV(Entero numeros[], Entero n)
+Entero Accion cantidadDivisores(Entero n)
+Logico Accion esPrimo(Entero n)
+Entero Accion cantidadPrimos(Entero n)
+
+Accion Principal
+DV
+  Entero n //E
+  Entero numeros[50]//E
+  Entero cantP //S
+Inicio 
+  Leer(n)
+  llenarV(numeros, n)
+  cantP <- cantidadPrimos(numeros, n)
+  Escribir(cantP)
+  //mostrarV(numeros, n) La parte de mostrar el vector no es obligatotorio, lo que si es, es la parte para llenar el vector.
+Fin
+
+Accion llenarV(Entero numeros[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+    Leer(numeros[i])
+  FPara
+FAccion
+
+            Accion mostrarV(Entero numeros[], Entero n)
+            DV
+            Entero i
+            Inicio 
+            Para i desde 1 a n Hacer
+                Escribir(numeros[i])
+            FPara
+            FAccion
+
+Entero Accion cantidadDivisores(Entero n)
+DV
+  Entero cant, i
+Inicio
+  cant <- 0
+  Para i desde 1 a n Hacer
+    Si n mod i = 0 Entonces 
+      cant <- cant + 1
+    FSi
+  FPara
+  Retornar cant
+Fin
+
+Logico Accion esPrimo(Entero n)
+DV
+  Logico resp
+  Entero cantDiv
+Inicio  
+  cantDiv <- cantidadDivisores(n)
+  Si cantDiv = 2 Entonces 
+    resp <- Verdadero
+  Sino 
+    resp <- Falso
+  FSi
+  Retornar resp
+Fin
+   
+
+Entero Accion cantidadPrimos(Entero numeros[], Entero n) //NECESITO RECORRER n, que es la cantidad de elementos de mi arreglo
+DV
+  Entero cantP
+  Logico primo
+Inicio 
+  cantP <- 0
+  Para i desde 1 a n Hacer
+  primo <- esPrimo(numeros[i]) //numeros[i], por ejemplo para i = 1 -> numeros[1] = 3, Primo? Si (Verdadero), o sea, accede a la posicion i del arreglo
+   Si primo = Verdadero
+    cantP <- cantP + 1
+   FSi
+  FPara
+  Retornar cantP
+Fin
+
+En primo <- esPrimo(numeros[i])
+
+Ponte que para n = 4, entonces: 
+i = 1, numeros[1] = 3 -> 3 es primo, por lo tanto primo <- V, entoncesa aumenta cantP
+i = 2, numeros[2] = 4 -> 4 no es primo, por lo tanto primo <- F, entonces no aumenta cantP
+  
+
+
+
+
+
+
+
+----------------------------------------------------------------
+Entero Accion cantidadPrimos(Entero numeros[], Entero n) //NECESITO RECORRER n, que es la cantidad de elementos de mi arreglo
+DV
+  Entero cantP
+  Logico primo
+Inicio 
+  cantP <- 0
+  primo <- esPrimo(numeros[i]) //acá i no está definido, por lo tanto es invalido y no se almacena lo que quiero en primo
+  Para i desde 1 a n Hacer
+    Si primo = Verdadero
+    cantP <- cantP + 1
+    FSi
+  FPara
+  Retornar cantP
+Fin
+----------------------------------------------------------------
+
+
+

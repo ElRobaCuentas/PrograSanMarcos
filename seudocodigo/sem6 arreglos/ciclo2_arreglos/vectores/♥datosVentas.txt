@@ -1,0 +1,63 @@
+Se tienen que almacenar los datos de las ventas de n (máximo 40) productos.
+Se pide:
+a. En el arreglo precios, guardar el precio de cada uno de los n productos.
+b. En el arreglo cantidad, guardar la cantidad vendida de cada uno de los n productos.
+c. En el arreglo ventas, guardar el importe de la venta de cada uno de los n productos
+d. Mostrar resultados de arreglo ventas
+
+precios
+ 10 | 25 | 33.50 | 99.90
+
+cantidad
+ 5  | 10 |   8   |   9
+
+ventas
+ 50 |....
+
+//Prototipos
+Accion llevarV[Real arreglo[], Entero n]
+Accion mostrarVentas[Real arreglo[], Entero n]
+Accion importeVenta(Real precios[], Real cantidad[], Entero n, Real ventas[])
+
+Accion Principal
+DV
+  Entero n //E
+  Real precios[40]
+  Real cantidad[40]
+  Real ventas[40]
+Inicio 
+  Leer(n)
+  llenarV(precios, n)
+  llenarV(cantidad, n)
+  importeVenta(precios, cantidad, n, ventas)
+  mostrarVentas(ventas, n)
+Fin
+
+
+Accion llevarV(Entero arreglo[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+   Leer(arreglo[i])
+  FPara
+Fin
+
+Accion mostrarVentas(Real arreglo[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta n Hacer
+    Escribir(arreglo[i])
+  FPara
+Fin
+
+Real Accion importeVenta(Real precios[], Real cantidad[], Entero n, Real ventas[])
+DV
+  Entero i
+Inicio
+  Para i desde 1 a n Hacer 
+    ventas[i] = precios[i]*cantidad[i]
+  FPara
+Fin
+

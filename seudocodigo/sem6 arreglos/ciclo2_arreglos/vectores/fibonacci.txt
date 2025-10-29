@@ -1,0 +1,63 @@
+Almacenar en un arreglo unidimensional los N (máximo 100) primeros números
+de Fibonacci. Muestre al final el arreglo correspondiente.
+
+//Prototipos
+Accion mostrarV(Entero v[], Entero n)
+Accion serieFibonacci(Entero v[], Entero n)
+
+Accion Principal
+DV
+  Entero v[100], n //E
+Inicio 
+  Leer(n)
+  serieFibonacci(v, n)
+  mostrarV(v, n)
+Fin
+
+
+Accion mostrarV(Entero v[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+    Escribir(v[i])
+  FPara
+Fin
+
+Accion serieFibonacci(Entero v[], Entero n)
+DV
+  Entero i
+Inicio 
+  v[1] <- 0
+  v[2] <- 1
+
+  Para i desde 3 hasta n Hacer 
+    v[i] <- v[i-1] + v[i-2]
+  FPara
+Fin
+
+-----------------------------------------------------------
+SI NO SE USABA VECTOR, LA LOGICA ES LA SIGUIENTE. 
+
+Accion fibonacci(Entero n)
+DV
+  Entero a, b, c, i
+Inicio
+  a <- 0
+  b <- 1
+
+  Si n MAYORIGUAL 1 Entonces
+    Escribir(a)
+  FSi
+
+  Si n MAYORIGUAL 2 Entonces
+    Escribir(b)
+  FSi
+
+  Para i desde 3 hasta n Hacer
+    c <- a + b
+    Escribir(c)
+    a <- b
+    b <- c
+  FPara
+Fin

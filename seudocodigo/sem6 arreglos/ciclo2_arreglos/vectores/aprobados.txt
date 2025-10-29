@@ -1,0 +1,56 @@
+Almacenar nota obtenida por cada uno de n alumnos (máximo 20) en
+el vector notas. Mostrar cuantos alumnos aprobaron
+
+sub1 <- llenarVector P
+sub2 <- mostrarVector P
+sub <- mostrarAprobados F
+
+
+//Prototipos
+Accion llenarVector(Entero notas[], Entero n)
+Accion mostrarVector(Entero notas[], Entero n)
+Entero Accion mostrarCantidadAprobados(Entero notas[], Entero n)
+
+
+Accion Principal
+DV
+  Entero n, notas[20] //E
+  Entero aprobados //S
+Inicio 
+  Leer(n)
+  llenarVector(notas, n) //? n=5 -> notas[10, 13, 15, 17, 20]
+  aprobados <- mostrarCantidadAprobados(notas, n) //esta funcion se encarga de comparar las notas con 11
+  mostrarVector(notas, n) //por formalidad muestra las notas, 10, 13, 15, 17, 20
+  Escribir(aprobados) //escribo la cantidad de aprobados, en este caso 4
+Fin
+
+Accion llenarVector(Entero notas[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta n Hacer
+    Leer(notas[i])
+  FPara
+Fin
+
+Accion mostrarVector(Entero notas[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta n Hacer
+    Escribir(notas[i])
+  FPara
+Fin
+
+Entero Accion mostrarCantidadAprobados(Entero notas[], Entero n)
+DV
+  Entero cont, i
+Inicio 
+  cont <- 0
+  Para i desde 1 hasta n Hacer
+    Si notas[i] >= 11 Entonces
+      cont <- cont + 1
+    Fsi
+  FPara
+  Retornar cont
+Fin

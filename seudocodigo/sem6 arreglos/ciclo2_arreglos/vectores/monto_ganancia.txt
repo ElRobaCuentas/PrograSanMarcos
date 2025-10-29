@@ -1,0 +1,107 @@
+Una librería que comercializa 5 productos diversos, maneja los siguientes
+arrays:
+- cosUni que guarda el costo de cada producto
+- preUni que guarda el Precio de venta de cada producto
+- UnidVend que guarda las unidades vendidas en un mes (cantidad)
+Elabore una solución que permita calcular:
+el monto de dinero invertido,
+el monto de la venta, la ganancia en cada producto y
+la ganancia total
+
+//Prototipos
+Accion costoUnit(Real cosUni[])
+Accion ventaUnit(Real venUni[])
+Accion unidadesVendidasMes(Entero unidVend[])
+Real Accion montoCosto(Real cosUni[], Entero unidVend[])
+Real Accion montoVenta(Real venUni[], Entero unidVend[])
+Accion gananciaUnit(Real cosUni[], Real venUni[], Entero unidVend[], Real gananciaT[])
+Real Accion gananciaTotal(gananciaT[])
+
+
+Accion Principal 
+DV
+  Real cosUni[5], ventaUnit[5], unidVend[5] //E
+  Real mCosto, mVenta, ganTotal //S
+  Real gananciaT[5] //S
+Inicio 
+  costoUnit(cosUni)
+  ventaUnit(venUni)
+  unidadesVendidasMes(unidVend)
+  mCosto <- montoCosto(cosUni, unidVend)
+  mVenta <- montoVenta(venUni, unidVend)
+  gananciaUnit(cosUni, venUni, unidVend, gananciaT)
+  ganTotal <- gananciaTotal(gananciaT)
+  Escribir(mCosto, mVenta, ganTotal)
+Fin
+
+Accion costoUnit(Real cosUni[])
+DV
+  Entero i 
+Inicio
+  Para i desde 1 hasta 5 Hacer
+    Leer(cosUni[i])
+  FPara
+Fin
+
+Accion ventaUnit(Real venUni[])
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta 5 Hacer
+    Leer(venUni[i])
+  FPara
+Fin
+
+Accion unidadesVendidasMes(Entero unidVend[])
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta 5 Hacer
+    Leer(unidVend[i])
+  FPara
+Fin
+
+Real Accion montoCosto(Real cosUni[], Entero unidVend[]) //Voy a tener que sumar, porque hay i=1,2,3,4,5
+DV
+  Entero i
+  Real sum
+Inicio
+  sum <- 0.0
+  Para i desde 1 hasta 5 Hacer
+    sum <- sum + (cosUni[i] * unidVend[i])
+  FPara
+  Retornar sum
+Fin
+
+Real Accion montoVenta(Real venUni[], Entero unidVend[])
+DV
+  Entero i
+  Real sum
+Inicio
+  sum <- 0.0
+  Para i desde 1 hasta 5 Hacer
+    sum <- sum + (venUni[i] * unidVend[i])
+  FPara
+  Retornar sum
+Fin
+
+Accion gananciaUnit(Real cosUni[], Real venUni[], Entero unidVend[], Real gananciaT[])
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta 5 Hacer
+    gananciaT[i] <- (venUni[i] - cosUni[i])*unidVend[i]
+  FPara
+Fin 
+
+Real Accion gananciaTotal(Real gananciaT[])
+DV
+  Entero i
+  Real sum
+Inicio 
+  sum <- 0.0
+  Para i desde 1 hasta 5 Hacer
+    sum <- sum + gananciaT[i]
+  FPara 
+  Retornar sum
+Fin

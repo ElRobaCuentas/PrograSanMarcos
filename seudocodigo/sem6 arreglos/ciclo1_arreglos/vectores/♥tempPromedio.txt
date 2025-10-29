@@ -1,0 +1,189 @@
+Se tiene un vector V[] con diferentes niveles de temperatura de una erupción volcánica, se desea 
+verificar si la tempertatura es menor o igual a 16°, si es asi, se guardarán estos datos en el
+vector T_Normal[], caso contrario se guardará en un vector llamado T_Elevado[]. Al final se desea 
+imprimir cada uno de los vectores, con su respectivo promedio de las temperaturas. 
+V[15] = {12, 21, 13, 10, 45, 11, 16, 12, 30, 22, 4, 18, 14, 41, 43}
+
+
+//Prototipos
+Accion llenarV(Entero V[], Entero n)
+Accion mostrarV(Entero V[], Entero n)
+Accion compararTemp(Entero V[], Entero n, Entero T_Normal[], Entero T_Elevado[], Entero &contN, Entero &contE)
+Accion Entero mostrarPromedioTempNormal(Entero V[], Entero n, Entero T_Normal[])
+Accion Entero mostrarPromedioTempElevado(Entero V[], Entero n, Entero T_Elevado[])
+
+Accion Principal
+DV
+  Entero n, V[15] //E
+  Entero T_Normal[15], T_Elevado[15]
+  Entero contN, contE
+  Entero promN, promE //S
+Inicio 
+  Leer(n)
+  llenarV(V, n) //se supone que debo llenar el vector con: {12, 21, 13, 10, 45, 11, 16, 12, 30, 22, 4, 18, 14, 41, 43}
+  compararTemp(V, n, T_Normal, T_Elevado, contN, contE)
+  promN <- mostrarPromedioTempNormal(V, n, T_Normal)
+  promE <- mostrarPromedioElevado(V, n, T_Elevado)
+  mostrarV(T_Normal[], Entero n)
+  mostrarV(T_Elevado[], Entero n)
+  Escribir(promN, promE)
+Fin
+
+Accion llenarV(Entero V[], Entero n)
+DV
+  Entero i
+Inicio  
+  Para i desde 1 a n Hacer
+    Leer(V[i])
+  FPara
+Fin
+
+Accion mostrarV(Entero V[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 a n Hacer
+    Escribir(V[i])
+  FPara
+Fin
+
+Accion compararTemp(Entero V[], Entero n, Entero T_Normal[], Entero T_Elevado[], Entero &contN, Entero &contE)
+DV 
+  Entero i
+Inicio  
+  contN <- 0
+  contE <- 0
+  Para i desde 1 a n Hacer 
+    Si V[i] MENOROIGUAL 16 Entonces
+      contN <- contN + 1
+      T_Normal[contN] <- V[i]
+    Sino
+      contE <- contE + 1
+      T_Elevado[contE] <- V[i]
+    FSi
+  FPara
+Fin
+    
+Accion Entero mostrarPromedioTempNormal(Entero V[], Entero n, Entero T_Normal[], Entero contN)
+DV
+  Entero i, sumN, promN
+Inicio
+  sumN <- 0
+  Para i desde 1 a contN Hacer //Para contN = 8 y empieza de 12, ...
+    sumN <- sumN + Entero T_Normal[i] //T_Normal[1] = 12 -> sum -> 12, y asi va sumando, pero si va con el indice 1
+  FPara
+  promN <- sumN/contN
+  Retornar promN
+Fin
+
+
+Accion Entero mostrarPromedioTempElevado(Entero V[], Entero n, Entero T_Elevado[], Entero contE)
+DV
+  Entero i, sumE, promE
+Inicio
+  sumE <- 0
+  Para i desde 1 a contE Hacer 
+    sumE <- sumE + Entero T_Elevado[i]
+  FPara
+  promE <- sumE/contE
+  Retornar promE
+Fin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+Explicación de porqué está mal. 
+
+1. No puedes guardar un vector dentro de otro vector, por eso, en "promN <- sumN/normal[]" no va a 
+tener sentido. 
+2. Lo que tiene que hacer es un contador, porque no lo que vas a dividir a sumN es un numero. 
+sumN/"[numero]"
+3. 
+    Recuerda que V[15] guarda todas las temperaturas
+    T_Elevado[contE] <- V[i] 
+    "Al recorrer cada i, ponte para i = 1 -> V[1] = 12; estoy diciendo, guarda ese 12 dentro del vector
+    T_Normal en la posicion contN, o sea, para i = 1 seguimos, T_Normal[contN], ese contN es 1, por lo
+    tanto, en la posicion 1 del vector T_Normal se guarda el 12. 
+
+
+
+
+//Prototipos
+Accion llenarV(Entero V[], Entero n)
+Accion mostrarV(Entero V[], Entero n)
+Accion compararTemp(Entero V[], Entero n, Entero T_Normal[], Entero T_Elevado[], Entero normal[], Entero elevado[])
+Accion Entero mostrarPromedioTempNormal(Entero V[], Entero n, Entero T_Normal[])
+Accion Entero mostrarPromedioTempElevado(Entero V[], Entero n, Entero T_Elevado[])
+
+Accion Principal
+DV
+  Entero n, V[15] //E
+  Entero normal[15], elevado[15], T_Normal[15], T_Elevado[15]
+  Entero promTemp //S
+Inicio 
+  Leer(n)
+  llenarV(V, n) //se supone que debo llenar el vector con: {12, 21, 13, 10, 45, 11, 16, 12, 30, 22, 4, 18, 14, 41, 43}
+  compararTemp(V, n, T_Normal, T_Elevado)
+  promTemp <- mostrarPromedioTemp(V, n, T_Normal, T_Elevado)
+
+
+
+Accion compararTemp(Entero V[], Entero n, Entero T_Normal[], Entero T_Elevado[], Entero normal[], Entero elevado[])
+DV 
+  Entero i
+Inicio
+  sum <- 0
+  Para i desde 1 a n Hacer 
+    Si V[i] > 16 Entonces
+      normal[i] <- T_Normal[i]
+    Sino
+      elevado[i] <- T_Elevado[i]
+    FSi
+  FPara
+Fin
+    
+Accion Entero mostrarPromedioTempNormal(Entero V[], Entero n, Entero T_Normal[], Entero normal[])
+DV
+  Entero i, sumN, promN
+Inicio
+  sumN <- 0
+  promN <- 0
+  Para i desde 1 a n Hacer 
+    sumN <- sumN + Entero T_Normal[i]
+  FPara
+  promN <- sumN/normal[]
+
+
+
+Accion Entero mostrarPromedioTempElevado(Entero V[], Entero n, Entero T_Elevado[])
+

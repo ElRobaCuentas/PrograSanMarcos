@@ -1,0 +1,49 @@
+Dado dos vectores A, B de 5 elementos enteros cada uno, y un vector C que contenga la suma de 
+ambos vectores. Imprimir los vectores A, B y C
+
+//Prototipos
+Accion llenarV(Entero v[], Entero n)
+Accion mostrarV(Entero v[], Entero n)
+Accion sumaVectores(Entero n, Entero A[], Entero B[], Entero C[])
+
+Accion Principal
+DV
+  Entero A[5], B[5], n //E
+  Entero C[5] //S
+Inicio 
+  Leer(n)
+  llenarV(A, n)
+  llenarV(B, n)
+  sumaVectores(n, A, B, C)
+  mostrarV(A, n)
+  mostrarV(B, n)
+  mostrarV(C, n)
+Fin
+
+Accion llenarV(Entero v[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+    Leer(v[i])
+  FPara
+Fin
+
+Accion sumaVectores(Entero n, Entero A[], Entero B[], Entero C[])
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+    C[i] = A[i] + B[i]
+  FPara
+Fin
+
+
+Accion mostrarV(Entero v[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 a n Hacer
+    Escribir(v[i])
+  FPara
+Fin

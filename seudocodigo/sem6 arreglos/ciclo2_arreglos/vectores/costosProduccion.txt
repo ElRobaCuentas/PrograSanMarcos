@@ -1,0 +1,60 @@
+Hacer un programa que calcule los costos de producción de n productos
+(máximo 50) ingresados por teclado, si se conocen los costos unitarios y las
+cantidades producidas de cada uno de los productos
+
+
+producto de vectores, costoUnit[] * cantidad[] -> contoTotal[]
+
+//Protostippo
+Accion costoUnit(Real costo[], Entero n)
+Accion cantidad(Entero cantidad[], Entero n)
+Accion costoProd(Real costo[], Entero cantidad[], Real costoProd[], Entero n)
+Accion mostrarCostoProd(costoPro[], Entero n)
+
+Accion Principal 
+DV
+  Entero n, cantidad[50] //E
+  Real costoUnit[50] //E
+  Real costoProd[50] //S
+Inicio
+  costoUnit(costo, n)
+  cantidad(cantidad, n)
+  costoProd(costo, cantidad, costoProd, n)
+  mostrarCostoProd(costoProd, n)
+Fin 
+
+Accion costoUnit(Real costo[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+    Leer(costo[i])
+  FPara 
+Fin
+
+Accion cantidad(Entero cantidad[], Entero n)
+DV
+  Entero i 
+Inicio
+  Para i desde 1 a n Hacer
+    Leer(cantidad[i])
+  FPara
+Fin
+  
+Accion costoProd(Real costo[], Entero cantidad[], Real costoProd[], Entero n)
+DV
+  Entero i
+Inicio
+  Para i desde 1 a n Hacer
+    costoProd[i] <- costo[i] * cantidad[i]
+  FPara 
+Fin
+
+Accion mostrarCostoProd(costoProd[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer
+    Escribir(costoProd[i])
+  FPara
+Fin

@@ -1,0 +1,104 @@
+Hacer un programa que lea edades y tallas de N atletas (participarán máximo 10 atletas). 
+La solución debe calcular:
+a. El promedio de las edades y de las tallas.
+b. Determinar ¿cuántos atletas son menores de edad (menores de 18 años) y cuantos atletas son mayores de
+edad?
+c. Determinar los índices de los atletas que son más altos que el promedio.
+
+//Prototipos
+Accion llenarV(Entero v[], Entero n)
+Entero Accion promEdades(Entero edades[], Entero n)
+Real Accion promTallas(Entero tallas[], Entero n)
+Entero cantMenorEdad(Entero edades[], Entero n)
+Entero cantMayorEdad(Entero edades[], Entero n)
+Entero indiceAtletasMayoresPromedio(Entero tallas[], Entero n, promT)
+
+Accion Principal 
+DV
+  Entero n, edades[10], tallas[10] //E
+  Entero promE, cantMe, cantMa indice // S
+  Real promT // S
+Inicio 
+  Leer(n)
+  llenarV(edades, n)
+  llenarV(tallas, n)
+  promE <- promEdades(edades, n)
+  promT <- promTallas(tallas, n)
+  cantMe <- cantMenorEdad(edades, n)
+  cantMa <- cantMayorEdad(edades, n)
+  indice <- indiceAtletasMayoresPromedio(tallas, n, promT)
+  Escribir(promE, promT, cantMe, cantMa, indice)
+Fin
+
+Accion llenarV(Entero v[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 a n Hacer 
+    Leer(v[i])
+  FPara
+Fin
+
+Entero Accion promEdades(Entero edades[], Entero n)
+DV
+  Entero i, prom, sum
+Inicio 
+  sum <- 0
+  Para i desde 1 a n Hacer
+    sum <- sum + edades[i]
+  FPara
+  prom <- sum/n
+  Retornar prom
+Fin
+
+Real Accion promTallas(Entero tallas[], Entero n)
+DV
+  Entero i, sum
+  Real prom
+Inicio 
+  sum <- 0
+  Para i desde 1 a n Hacer
+    sum <- sum + tallas[i]
+  FPara
+  prom <- 1.0*sum/n
+  Retornar prom
+Fin
+    
+Entero cantMenorEdad(Entero edades[], Entero n)
+DV
+  Entero i, cantMe
+Inicio 
+  cantMe <- 0
+  Para i desde 1 a n Hacer
+    Si edades[i] < 18 Entonces
+      cantMe <- cantMe + 1
+    FSi
+  FPara
+  Retornar cantMe
+Fin
+
+Entero cantMayorEdad(Entero edades[], Entero n)
+DV
+  Entero i, cantMa
+Inicio 
+  cantMa <- 0
+  Para i desde 1 a n Hacer
+    Si edades[i] > 18 Entonces
+      cantMa <- cantMa + 1
+    FSi
+  FPara
+  Retornar cantMa
+Fin
+
+Entero indiceAtletasMayoresPromedio(Entero tallas[], Entero n, promT)
+DV
+  Entero i
+Inicio
+  ubic <- 0
+  Para i desde 1 a n Hacer 
+   Si tallas[i] > promT Entonces
+    Escribir(i) //plural
+   FSi
+  FPara
+  Retornar ubic 
+Fin

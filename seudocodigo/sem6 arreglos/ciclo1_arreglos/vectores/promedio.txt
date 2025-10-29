@@ -1,0 +1,50 @@
+1.
+En un vector con 10 notas enteras, obtenga el promedio de dichas notas: 
+notas[10] = {5, 10, 4, 8, 12, 10, 9, 8, 15, 17}
+
+Accion llenarV(Entero notas[], Entero n)
+Accion Entero promedioNotas(Entero notas[], Entero n)
+Accion mostrarV(Entero notas[], Entero n)
+
+Accion Principal
+DV
+  Entero n, notas[10] //E   
+  Entero prom //S
+Inicio 
+  Leer(n)
+  llenarV(notas, n) //aca en llenar tendria que poner -> {5, 10, 4, 8, 12, 10, 9, 8, 15, 17} 
+  prom <- promedioNotas(notas, n)
+  mostrarV(notas, n)
+  Escribir(prom)
+Fin
+
+Accion llenarV(Entero notas[], Entero n)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta n Hacer
+    Leer(notas[i])
+  FPara
+Fin
+
+Accion mostrarV(Entero notas[], Entero n)
+DV
+  Entero i
+Iicio 
+  Para i desde 1 hasta n Hacer
+    Escribir(notas[i])
+  FPara
+Fin
+
+Accion Entero promedioNotas(Entero notas[], Entero n)
+DV
+  Entero i, sum, prom
+Inicio
+  sum <- 0
+  Para i desde 1 a n Hacer
+    sum <- sum + notas[i]
+  FPara
+  prom <- sum/n
+  Retornar prom
+Fin
+
