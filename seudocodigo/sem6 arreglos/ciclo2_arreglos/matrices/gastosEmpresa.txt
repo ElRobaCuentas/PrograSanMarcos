@@ -1,0 +1,82 @@
+3.- En una tabla Gastos se almacenan los gastos de una empresa durante los 12
+meses del año, en cada uno de sus 15 rubros: útiles de oficina, teléfono, luz,
+agua, salarios, alquiler, etc.
+Crear:
+a. El array unidimensional con Gastos Anuales por Rubros (GAPR)
+b. El array unidimensional con Gastos Mensuales en todos los Rubros (GM)
+
+//Prototipos
+Accion llenarM(m[][12], Entero f, Entero c)
+Accion gastosAnualesRubros(Entero m[][12], Entero f, Entero gastosAnRu[])
+Accion gastosMensualesRubros(Entero m[][12], Entero c, Entero gastosMenRu[])
+Accion mostrarGastosAnualesRubros(Entero gastosAnRu[], Entero f)
+Accion mostrarGastosMensualesRubros(Entero gastosMenRu[], Entero c)
+
+Accion Principal
+DV
+  Entero f, c, m[15][12] //E
+  Entero gastosAnRu[15], Entero gastosMenRu[12] //S
+Inicio 
+  Leer(f, c)
+  llenarM(m, f, c)
+  gastosAnualesRubros(m, f, gastosAnRu)
+  gastosMensualesRubros(m, c, gastosMenRu)
+  mostrarGastosAnualesRubros(gastosAnRu, f)
+  mostrarGastosMensualesRubros(gastosMenRu, c)
+Fin
+
+Accion llenarM(m[][12], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio 
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+        Leer(m[i][j])
+    FPara
+  FPara
+Fin
+
+Accion gastosAnualesRubros(Entero m[][12], Entero f, Entero gastosAnRu[])
+DV
+  Entero i, j sum
+Inicio  
+  Para i desde 1 hasta f Hacer
+    sum <- 0
+    Para j desde 1 hasta c Hacer
+        sum <- sum + m[i][j]
+    FPara
+    gastosAnRu[i] <- sum
+  FPara
+Fin
+
+
+Accion gastosMensualesRubros(Entero m[][12], Entero c, Entero gastosMenRu[])
+DV
+  Entero i, j sum
+Inicio  
+  Para j desde 1 hasta c Hacer
+    sum <- 0
+    Para i desde 1 hasta f Hacer
+        sum <- sum + m[i][j]
+    FPara
+    gastosMenRu[j] <- sum
+  FPara
+Fin
+
+Accion mostrarGastosAnualesRubros(Entero gastosAnRu[], Entero f)
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta f Hacer
+    Escribir(gastosAnRu[i])
+  FPara
+Fin
+
+Accion mostrarGastosMensualesRubros(Entero gastosMenRu[], Entero c)
+DV
+  Entero j
+Inicio
+  Para j desde 1 hasta c Hacer
+    Escribir(gastosMenRu[j])
+  FPara
+Fin

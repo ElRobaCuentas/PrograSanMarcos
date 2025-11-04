@@ -1,0 +1,52 @@
+5.- Dada una matriz A(M x N) de tipo entero, construya un programa para calcular
+la transpuesta de dicha matriz. La transpuesta de una matriz se obtiene al escribir
+las filas de la matriz A como columnas.
+
+//Prototitpos
+Accion llenarM(Entero m[][50], Entero f, Entero c)
+Accion mostrarTranspuestaDeMatriz(Entero m[][50], Entero f, c)
+
+Accion Principal
+DV
+  Entero f, c, m[50][50]//E
+Inicio
+  Leer(f, c)
+  llenarM(m, f, c)
+  mostrarTranspuestaDeMatriz(m, f, c)
+Fin
+
+Accion llenarM(Entero m[][50], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio 
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+        Leer(m[i][j])
+    FPara
+  FPara
+Fin
+
+Accion mostrarTranspuestaDeMatriz(Entero m[][50], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio 
+  Para i desde 1 hasta c Hacer
+   Para j desde 1 hasta f Hacer
+      Escribir(m[j][i])
+   FPara
+  FPara
+Fin
+
+Esto se veria asi:
+
+Tamaño 2x3:
+    
+        1 2 3
+    A = 
+        4 5 6
+        
+Transpuesta: 
+
+        1 4     
+    A = 2 5
+        3 6

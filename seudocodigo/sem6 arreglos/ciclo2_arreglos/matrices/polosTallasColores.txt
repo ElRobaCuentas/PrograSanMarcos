@@ -1,0 +1,214 @@
+2.- Se tiene una tienda que vende polos, en una array bidimensional se almacena la
+cantidad de polos por tallas y colores:
+
+        Rojo Azul Verde Blanco Negro Amarillo  PreUni  CapInv
+CANT
+Junior   3    7    3       2     4     4
+Small    1    2    3       2     5     2
+Médium   1    2    3       4     2     2
+Large    1    2    1       5     1     4
+XL       1    2    1       2     2     5
+
+Calcular:
+a. Cantidad de polos por tallas.
+b. Cantidad de polos por colores,
+c. Los polos Blanco y negro son de mayor demanda, hacer un pedido si las
+existencias son menores a un mínimo de 50 polos
+d. Los precios de los polos varían por tallas, determinar de acuerdo a las
+existencias, cual es el capital que la empresa tiene invertido en cada talla y el total
+en mercadería.
+e. en que talla se tiene invertido el mayor capital.
+
+
+//Prototipo
+Accion llenarM(Entero m[][7], Entero f, Entero c)
+Accion cantPolosPorTallas(Entero m[][7], Entero f, Entero c, Entero vectorP[])
+Accion mostrarCantPolos(Entero f, Entero vectorP[])
+Accion cantPolosPorColores(Entero m[][7], Entero f, Entero c, Entero vectorC[])
+Accion mostrarCantColores(Entero c, Entero vectorC[])
+Accion cantPolosBlancosNegros(Entero m[][7], Entero f, Entero vectorPolosBN[])
+Accion compararCantidadPolosBN(Entero vectorPolosBN[])
+Accion cantPreFila(Entero m[][7], Entero f, Entero c, Entero cantFila[])
+Accion capInv(Entero f, Entero m[][7], Entero cantFila[], Real capitalInv[])
+Real Accion mostrarCapInv(Entero f, Real capitalInv[]) //caundo menciona "mercaderia" en el punto d. 
+Real Accion mayorCantTalla(Entero f, Real capitalInv[])
+
+AccioN Principal
+DV
+  Entero f, c, m[5][8] //E
+  Entero vectorP[5], vectorC[8], vectorPolosBN[2]
+  Entero cantFila[5], capitalInv[5]
+  Real totalCap, mCant
+Incio
+  Leer(f, c)
+  llenarM(m, f, c)
+  cantPolosPorTallas(m, f, c, vectorP)
+  mostrarCantPolos(f, vectorP)
+  cantPolosPorColores(m, f, c, vectorC)
+  mostrarCantColores(c, vectorC)
+  cantPolosBlancosNegros(m, vectorPolosBN)
+  compararCantidadPolosBN(vectorPolosBN)
+  cantPreFila(m, f, c, cantFila)
+  capInv(f, m, cantFila, capitalInv)
+  mostrarCapInv(f, capitalInv)
+  totalCap <- cantTotalCapital(f, capitalInv)
+  mCant <- mayorCantTalla(f, capInv)
+  Escribir(totalCap, mCant)
+Fin
+
+
+Accion llenarM(Entero m[][7], Entero f, Entero c)
+DV 
+  Entero i, j
+Inicio
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+       Leer(m[i][j])
+    FPara
+  FPara
+Fin
+
+Accion cantPolosPorTallas(Entero m[][7], Entero f, Entero c, Entero vectorP[])
+DV
+  Entero i, j, sum
+Inicio
+  Para i desde 1 hasta f Hacer  
+    sum <- 0
+    Para j desde 1 hasta c Hacer
+      sum <- sum + m[i][j]
+    FPara
+    vectorP[i] <- sum
+  FPara
+Fin
+
+Accion mostrarCantPolos(Entero f, Entero vectorP[])
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta f Hacer
+    Escribir(vectorP[i])
+  FPara
+Fin
+
+Accion cantPolosPorColores(Entero m[][7], Entero f, Entero c, Entero vectorC[])
+DV
+  Entero i, j, sum
+Inicio
+  Para i desde 1 hasta c Hacer  
+    sum <- 0
+    Para i desde 1 hasta f Hacer
+      sum <- sum + m[i][j]
+    FPara
+    vectorC[j] <- sum
+  FPara
+Fin
+
+Accion mostrarCantColores(Entero c, Entero vectorC[])
+DV
+  Entero j
+Inicio 
+  Para j desde 1 hasta c Hacer
+    Escribir(vectorC[j])
+  FPara
+Fin
+
+Accion cantPolosBlancosNegros(Entero m[][7], Entero f, Entero vectorPolosBN[])
+DV 
+  Entero i, j, sum
+Inicio 
+  k <- 0 
+  Para j desde 4 hasta 5 Hacer
+    sum <- 0
+    Para i desde 1 hasta f Hacer
+      sum <- sum + m[i][j]
+    FPara
+    vectorPolosBN[k] <- sum
+    k <- k + 1   
+  FPara
+Fin
+
+*******************************************************************************************
+MAL HECHO:
+vectorPolosBN[] solo tiene 2 posiciones, si pongo 4 y 5, dejo vacio las posiciones 1,2,3
+Entonces:
+ Accion cantPolosBlancosNegros(Entero m[][8], Entero f, Entero vectorPolosBN[])  
+DV 
+  Entero i, j, sum
+Inicio 
+  Para j desde 4 hasta 5 Hacer
+    sum <- 0
+    Para i desde 1 hasta f Hacer
+        sum <- sum + m[i][j]
+  FPara
+  vectorPolosBN[j] <- sum 
+Fin
+********************************************************************************************
+
+Accion compararCantidadPolosBN(Entero vectorPolosBN[])
+DV
+  Entero j
+Inicio 
+  Para j desde 0 hasta 1 Hacer
+    Si vectorPolosBN[j] < 50 
+      Escribir(vectorPolosBN[j])
+    FSi
+  FPara
+Fin
+
+Accion cantPreFila(Entero m[][7], Entero f, Entero c, Entero cantFila[])
+DV
+  Entero i, j, sum
+Inicio
+  Para i desde 1 hasta f Hacer
+    sum <- 0
+    Para j desde 1 hasta c-1 Hacer //voy a sumar los colores, pero no el precio unitario, por eso es c-1, no c
+      sum <- sum + m[i][j]
+    FPara
+    cantFila[i] <- sum
+  FPara
+Fin
+Accion capInv(Entero f, Entero m[][7], Entero cantFila[], Real capitalInv[])
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta f Hacer
+    captitalInv[i] <- cantFila[i] * m[i][7]
+  FPara
+Fin
+
+Accion mostrarCapInv(Entero f, Real capitalInv[])
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta f Hacer
+    Escribir(capitalInv[i])
+  FPara
+Fin
+
+Real Accion cantTotalCapital(Entero f, Real capitalInv[])
+DV
+  Entero i
+  Real sum
+Inicio
+  sum <- 0
+  Para i desde 1 hasta f Hacer
+    sum <- sum + capitalInv[i]
+  FPara
+  Retornar sum
+Fin
+
+Real Accion mayorCantTalla(Entero f, Real capitalInv[])
+DV 
+  Entero i
+  Real mayorCant
+Inicio 
+  mayorCant <- 0.0
+  Para i desde 1 hasta f Hacer  
+    Si capitalInv[i] > mayorCant Entonces
+      mayorCant <- captitalInv[i] 
+    FSi
+  FPara
+  Retornar mayorCant
+Fin
+
+

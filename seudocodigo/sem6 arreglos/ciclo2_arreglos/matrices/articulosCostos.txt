@@ -1,0 +1,167 @@
+7.- Crear un arreglo para almacenar los valores de la tabla.
+
+ARTICULOS   Articulo1   Articulo2   Articulo3   Articulo4   NAE
+
+Almacén 1       30         50           0           25      105
+Almacén 2        0         29           20          65      114
+Almacén 3       10          0           17          45      72
+
+
+Costo   2.6     7.9     2.9     5.7
+Artic.   1       2       3       4
+
+
+Se pide:
+a. Calcular que artículos están agotados en el almacén 1.
+b. En cualquiera de los almacenes, cual es el artículo que está agotado (debe
+indicar el número de almacén y del artículo).
+c. Indicar el número de artículos en existencia en cada uno de los almacenes
+d. Si se posee el costo de cada artículo en un arreglo COSTO determinar el costo
+total de cada artículo en cada almacén
+e. El costo total de inventario en cada almacén.
+f. El costo total de cada artículo en todos los almacenes.
+g. El costo global del inventario.
+
+//Prototipos
+Accion llenarM(Entero m[][4], Entero f, Entero c)
+Accion artAgotA1(Entero m[][4], Entero c)               //a
+Accion artAgoAlmacen(Entero m[][4], Entero f, Entero c)         //b
+Accion cantArticulosAlmacen(Entero m[][4], Entero f, Entero c, Entero vectorArtAl[]) //c
+Accion costosArt(Real cArt[]) //necesario para el d
+Accion costoTotalArtAlm(Entero m[][4], Entero f, Entero c, Real cArt[], Real costoTotalArtA[][4]) //d
+Accion costoTotalInvAlm(Entero m[][4], Entero f, Entero c, Entero cArt[], Entero costoTotI[]) //e
+Accion costoTotalAlm(Entero m[][4], Entero f, Entero c, Real cTotAlm[])
+Real Accion costoGlobalInv(Entero f, Entero costoTotI[])
+
+
+Accion Principal
+DV
+  Entero f, c, m[3][4] //E
+  Entero cArt[4]
+  Entero vectorArtAl[3], costoTotalArtA[3][4]
+  Entero costoTotI[3]
+  Entero cTotAlm[4]
+  Real cG
+
+Inicio
+  Leer(f, c)
+  llenarM(m, f, c)
+  artAgotA1(m, c)
+  artAgoAlmacen(m, f, c)
+  cantArticulosAlmacen(m, f, c, vectorArtAl)
+  costosArt(cArt)
+  costoTotalArtAlm(m, f, c, cArt, costoTotalArtA)
+  costoTotalInvAlm( m, f, c, cArt, costoTotI)
+  costoTotalAlm(m, f, c, cTotAlm)
+  cG <- costoGlobalInv(f, costoTotI)
+Fin
+
+Accion llenarM(Entero m[][4], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio 
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+        Leer(m[i][j])
+    FPara
+  FPara
+Fin
+
+Accion artAgotA1(Entero m[][4], Entero c)
+DV
+  Entero j, i
+Inicio
+  i <- 1
+  Para j desde 1 hasta c Hacer
+    Si m[i][j] = 0 Entonces
+        Escribir(j)
+    FSi
+  FPara
+Fin
+  
+Accion artAgoAlmacen(Entero m[][], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+        Si m[i][j] = 0 Entonces
+            Escribir(i)
+            Escribir(j)
+        FSi
+    FPara
+  FPara
+Fin
+
+
+Accion cantArticulosAlmacen(Entero m[][4], Entero f, Entero c, Entero vectorArtAl[])
+DV
+  Entero i, j, sum
+Inicio  
+  Para i desde 1 hasta f Hacer
+    sum <- 0
+    Para j desde 1 hasta c Hacer
+        sum <- sum + m[i][j]
+    FPara
+    vectorArtAl[i] <- sum
+  FPara
+Fin
+
+Accion costosArt(Real cArt[])
+DV
+  Entero j
+Inicio
+  Para j desde 1 hasta 4 Hacer
+    Leer(cArt[j])
+  FPara
+Fin
+
+
+Accion costoTotalArtAlm(Entero m[][4], Entero f, Entero c, Real cArt[], Real costoTotalArtA[][4])
+DV
+  Entero i, j 
+Inicio 
+  Para i desde 1 hasta f Hacer  
+    Para j desde 1 hasta c Hacer    
+        costoTotalArtA[i][j] <- m[i][j]*cArt[j]
+    FPara
+  FPara
+Fin
+
+Accion costoTotalInvAlm(Entero m[][4], Entero f, Entero c, Real cArt[], Entero costoTotI[])
+DV
+  Entero i, j, sum
+Inicio 
+  Para i desde 1 hasta f Hacer
+    sum <- 0
+    Para j desde 1 hasta c Hacer 
+        sum <- sum + m[i][j]*cArt[j]
+    FPara
+    costoTotI[i] <- sum
+  FPara
+Fin
+
+Accion costoTotalAlm(Entero m[][4], Entero f, Entero c, Real cTotAlm[])  //suma por columnas
+DV
+  Entero i, j, sum
+Inicio 
+  Para j desde 1 hasta c Hacer  
+    sum <- 0
+    Para i desde 1 hasta f Hacer
+        sum <- sum + m[i][j]
+    FPara
+    cTotAlm[j] <- sum
+  FPara
+Fin
+
+Real Accion costoGlobalInv(Entero f, Entero costoTotI[])
+DV
+  Entero i
+  Real cGlobal
+Inicio   
+  cGlobal <- 0
+  Para i desde 1 hasta f Hacer 
+    cGlobal <- cGlobal + costoTotI[i]
+  FPara
+  Retornar cGlobal
+Fin

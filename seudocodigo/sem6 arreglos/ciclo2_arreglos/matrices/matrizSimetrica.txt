@@ -1,0 +1,52 @@
+4.- Una matriz cuadrada A es simétrica si A[i,j]=A[j, i], para todo i,j. Determinar si
+una matriz de n x n cuyos valores son ingresados es simétrica.
+
+
+a. Dice el texto para todo i, j.
+Osea si en al menos una pareja (i, j) no se cumple que A[i, j] = A[j, i],
+entonces la matriz deja de ser simétrica.
+
+b. No dice el tamaño de la matriz, pero pongamosle por conveniencia
+
+//Prototipos
+Accion llenarM(m[][50], Entero f, Entero c)
+Logico esSimetrica(m[][50], Entero f, Entero c)
+
+
+Accion Principal
+DV
+  Entero f, c, m[50][50]
+  Logico sim
+Incio
+  Leer(f, c)
+  llenarM(m, f, c)
+  sim <- esSimetrica(m, f, c)
+  Escribir(sim)
+Fin
+
+Accion llenarM(m[][], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio 
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+        Leer(m[i][j])
+    FPara
+  FPara
+Fin
+
+Logico esSimetrica(m[][50], Entero f, Entero c)
+DV 
+  Entero i, j
+  Logico esSim
+Inicio
+  esSim <- Verdadero
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+      Si m[i][j] <> m[j][i] Entonces
+        esSim <- Falso
+      FSi
+    FPara
+  FPara
+  Retornar esSim
+Fin 

@@ -1,3 +1,5 @@
+//CODIGO MAL HECHO
+
 1.- En una empresa, existen productos de m tipos distribuidos en n diferentes
 almacenes. Calcular la cantidad de productos que existen en cada almacén, la
 cantidad de productos de cada tipo y la cantidad total de productos de todos los
@@ -38,7 +40,6 @@ Inicio
   Escribir(tGeneral)
 Fin
 
-
 Accion llenarM(Entero prod[][15], Entero n, Entero m)
 DV
   Entero i, j
@@ -49,7 +50,6 @@ Inicio
     FPara
   FPara
 Fin
-
 
 Accion cantProAlmacen(Entero prod[][15], Entero n, Entero m, Entero totalAlmacen[])
 DV
@@ -63,7 +63,6 @@ Inicio
     totalAlmacen[i] <- suma
   FPara
 Fin
-
 
 Accion cantProTipo(Entero prod[][15], Entero n, Entero m, Entero totalTipo[])
 DV
@@ -90,7 +89,6 @@ Inicio
   Retornar suma
 Fin
 
-
 Accion mostrarMatriz(Entero prod[][15], Entero n, Entero m)
 DV
   Entero i, j
@@ -102,7 +100,6 @@ Inicio
   FPara
 Fin
 
-
 Accion mostrarCantAlmacen(Entero totalAlmacen[], Entero n)
 DV
   Entero i
@@ -112,7 +109,6 @@ Inicio
   FPara
 Fin
 
-
 Accion mostrarCantTipo(Entero totalTipo[], Entero m)
 DV
   Entero j
@@ -121,3 +117,164 @@ Inicio
     Escribir(totalTipo[j])
   FPara
 Fin
+
+
+//-------------------------------------------------------------------------------------------
+
+
+//CODIGO BIEN HECHO
+
+En una empresa, existen productos de m tipos distribuidos en n diferentes almacenes.
+...Considerar un máximo de 20 almacenes y 15 tipos de productos diferentes por almacén
+
+//Entonces será m(f) ALMACEN 15 y n(c) TIPOS 20 -> mxn
+
+//Prototipos
+Accion llenarM(Entero prod[][20], Entero f, Entero c)
+Accion cantProAlmacen(Entero prod[][20], Entero f, Entero c, Entero totalAlmacen[])
+Accion cantProTipo(Entero prod[][15], Entero f, Entero c, Entero totalTipo[])
+Entero Accion totalGeneral(Entero totalAlmacen[], Entero c)
+Accion mostrarMatriz(Entero prod[][15], Entero f, Entero c)
+Accion mostrarCantAlmacen(Entero totalAlmacen[], Entero c)
+Accion mostrarCantTipo(Entero totalTipo[], Entero f)
+
+Accion Principal
+DV
+  Entero f, c
+  Entero prod[15][20]
+  Entero totalAlmacen[15], totalTipo[20]
+  Entero tGeneral
+Inicio
+  Leer(f, c)
+  llenarM(prod, f, c)
+  cantProAlmacen(prod, f, c,  totalAlmacen)
+  cantProTipo(prod, f, c, totalTipo)
+  tGeneral <- totalGeneral(totalAlmacen, c)
+
+  mostrarMatriz(prod, f, c)
+  mostrarCantAlmacen(totalAlmacen, c)
+  mostrarCantTipo(totalTipo, f)
+  Escribir(tGeneral)
+Fin
+
+Accion llenarM(Entero prod[][20], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+      Leer(prod[i][j])
+    FPara
+  FPara
+Fin
+
+
+Accion cantProAlmacen(Entero prod[][20], Entero f, Entero c, Entero totalAlmacen[])   //SUMA DE COLUMNAS ↓
+
+/*
+  Va a cambiar en cada iteracion el i=1,2,3...m, respecto a un j=1...n
+    Vas a recorrer columnas 
+      [1,1]  [2,2]
+      [2,1]  [3,2]
+      [3,1]  [4,2]
+      [4,1]  [5,2]
+      ...    ...
+      Rpta1  Rpta2
+*/
+
+DV
+  Entero i, j, suma
+Inicio
+  Para j desde 1 hasta c Hacer
+    suma <- 0
+    Para i desde 1 hasta f Hacer
+      suma <- suma + prod[i][j]
+    FPara
+    totalAlmacen[j] <- suma
+  FPara
+Fin
+
+Accion cantProTipo(Entero prod[][15], Entero f, Entero c, Entero totalTipo[]) //SUMA DE FILAS 
+
+/*
+  Va a cambiar en cada iteracion el j=1,2,3...n, respecto a un i=1...m
+    Vas a recorrer filas
+      [1,1]  [1,2] [1,3] ... Rtpa1
+      [2,1]  [2,2] [2,3] ... Rpta2
+      [3,1]  [3,2] [3,3] ... Rtpa1
+*/
+
+DV
+  Entero i, j, suma
+Inicio
+  Para i desde 1 hasta f Hacer
+    suma <- 0
+    Para j desde 1 hasta c Hacer
+      suma <- suma + prod[i][j]
+    FPara
+    totalTipo[i] <- suma
+  FPara
+Fin
+
+Entero Accion totalGeneral(Entero totalAlmacen[], Entero c)
+DV
+  Entero i, suma
+Inicio
+  suma <- 0
+  Para i desde 1 hasta c Hacer
+    suma <- suma + totalAlmacen[i]
+  FPara
+  Retornar suma
+Fin
+↓
+↓
+/*********************************************************************
+Entero Acción totalGeneral(Entero productos[][20], Entero f, Entero c)
+D.V.
+    Entero i, j, suma
+Inicio
+    suma ← 0
+    Para i de 1 a f hacer
+        Para j de 1 a c hacer
+            suma ← suma + productos[i, j]
+        Fpara
+    Fpara
+    retornar suma
+Fin
+/***********************************************************************
+
+
+Accion mostrarMatriz(Entero prod[][15], Entero f, Entero c)
+DV
+  Entero i, j
+Inicio
+  Para i desde 1 hasta f Hacer
+    Para j desde 1 hasta c Hacer
+      Escribir(prod[i][j])
+    FPara
+  FPara
+Fin
+
+
+Accion mostrarCantAlmacen(Entero totalAlmacen[], Entero c)
+DV
+  Entero i
+Inicio
+  Para i desde 1 hasta c Hacer
+    Escribir(totalAlmacen[i])
+  FPara
+Fin
+
+
+Accion mostrarCantTipo(Entero totalTipo[], Entero f)
+DV
+  Entero j
+Inicio
+  Para j desde 1 hasta c Hacer
+    Escribir(totalTipo[j])
+  FPara
+Fin
+
+
+LA CANTIDAD DE TOTALES POR TIPO, MAXIMO 15, PERO LA VERDAD SON f TOTALES
+LA CANTIDAD DE TOTALES POR ALMACEN, MAXIMO 20, PERO LA VERDAD SON c TOTALES

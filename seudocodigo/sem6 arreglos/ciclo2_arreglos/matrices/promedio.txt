@@ -2,6 +2,7 @@ En una matriz de m x n (máximo 50 x 50), almacenar cantidades
 de tablets vendidas. Se pide:
 a. Hallar el promedio de ventas
 b. Mostrar cuántas ventas son mayores que el promedio.
+c. Hallar total de tablets vendidas por cada fila
 
 Aclaro que "m" funciona como f(filas) y "n" funciona como c(columnas)
 
@@ -9,19 +10,25 @@ Aclaro que "m" funciona como f(filas) y "n" funciona como c(columnas)
 Accion llenarM(Entero ma[][50], Entero m, Entero n)
 Real Accion promVentas(Entero ma[][50], Entero m, Entero n)
 Entero Accion ventasMayoresProm(Entero ma[][50], Entero m, Entero n, Real prom)
-Accion mostrarM(Entero ma[][50], Entero m, Entero n)
+Accion totalPorFila(Entero ma[][50], Entero m, Entero n, Entero totalFila[])
+Accion mostrarTotFila(Entero totalFila[], Entero m)
 
 Accion Principal 
 DV
   Entero m, n, ma[50][50] //E
-  Real prom //S
-  Entero ventas //S
+  Entero totalFila[50]
+  Real prom //S 
+  Entero ventas //S 
 Inicio
   Leer(m, n)
   llenarM(ma, m, n)
+
   prom <- promVentas(ma, m, n)
   ventas <- ventasMayoresProm(ma, m, n, prom)
   Escribir(prom, ventas)
+
+  totalPorFila(ma, m, n, totalFila)
+  mostrarTotFila(totalFila, m)
 Fin
 
 Accion llenarM(Entero ma[][50], Entero m, Entero n)
@@ -46,14 +53,15 @@ Inicio
       sum <- sum + ma[i][j]
     FPara
   FPara
-  prom <- sum/(m*n)
-  Retornar prom
+  promedio <- sum/(m*n)
+  Retornar promedio
 Fin
 
 Entero Accion ventasMayoresProm(Entero ma[][50], Entero m, Entero n, Real prom)
 DV 
   Entero i, j, cont
 Inicio 
+  cont <- 0
   Para i desde 1 hasta m Hacer
     Para j desde 1 hasta n Hacer
       Si ma[i][j] > prom Entonces  
@@ -64,14 +72,27 @@ Inicio
   Retornar cont
 Fin
 
+Accion totalPorFila(Entero ma[][50], Entero m, Entero n, Entero totalFila[])
+DV
+  Entero i, j, suma
+Inicio
+  Para i desde 1 hasta m Hacer
+    suma <- 0
+    Para j desde 1 hasta n Hacer
+      suma <- suma + ma[i][j]
+    FPara
+    totalFila[i] <- suma
+  FPara
+Fin
 
-
-
-
-
-
-
-
+Accion mostrarTotFila(Entero totalFila[], Entero m)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta m Hacer
+    Escribir(totalFila[i])
+  FPara
+Fin
 
 
 
