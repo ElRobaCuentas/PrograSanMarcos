@@ -1,0 +1,228 @@
+
+
+2. La empresa Pris S.A. vende artículos electrodomésticos cuyos datos son código,
+descripción, color, precio unitario. Los datos de los artículos deben guardarse en
+un arreglo de estructuras de tamaño 100. Crear pseudocódigo necesario para:
+a. Ingresar datos de un artículo a la vez al arreglo.
+b. Eliminar un artículo del arreglo, el usuario indicará el código del artículo
+correspondiente.
+c. Mostrar los datos de un artículo del que se especifique su código.
+d. Mostrar todos los artículos de precio unitario superior a S/.1000
+
+
+//Estructuras:
+
+Estructura Articulos 
+    Entero codigo
+    Cadena descripcion
+    Cadena color
+    Real precioUnit
+FEstructura
+
+//Prototipos
+Accion llenarVEst(Articulos artic[], Entero c)
+Accion eliminarCodigo(Articulos artic[], Entero &c)
+Accion mostrarArtCodigo(Articulos artic[], Entero c)
+Accion mostrarArticPreUnit(Articulos artic[], Entero c)
+
+Accion Principal 
+DV
+  Entero c
+  Articulos artic[100]
+Inicio 
+  Leer(c)
+  llenarVEst(artic, c)
+  eliminarCodigo(artic, c)
+  mostrarArtCodigo(artic, c)
+  mostrarArticPreUnit(artic, c)
+Fin
+
+Accion llenarVEst(Articulos artic[], Entero c)
+DV
+  Entero i
+Inicio 
+  Para i desde 1 hasta c Hacer
+    Leer(artic[i].codigo)
+    Leer(artic[i].descripcion)
+    Leer(artic[i].color)
+    Leer(artic[i].precioUnit) 
+  FPara
+Fin
+
+                                    Accion eliminarCodigo(Articulos artic[], Entero &c)
+                                    DV
+                                      Entero i, cod
+                                    Inicio
+                                      Leer(cod)
+                                      Para i desde 1 hasta c-1 Hacer 
+                                        Si artic[i].codigo = cod Entonces
+                                            artic[i] <- artic[i+1]
+                                        FSi
+                                      FPara
+                                      c <- c - 1
+                                    Fin
+
+
+    /*
+      Ese subprograma estaría mal porque solo copio cierta posicion y no desplazo a los que siguen
+      a donde deberian ir. 
+
+      Índice	Código
+        1	      10
+        2	      20
+        3	      30
+        4	      40
+
+        cod=20 y c=4
+
+        Para i=1 -> codigo 10 != 20 NO ENTRA
+        Para i=2 -> codigo 20 = 20 SI ENTRA
+          artic[2] <- artic[3] O sea copias 30 sobre 20
+
+        Índice	Código
+          1	      10
+          2	      30
+          3	      30
+          4	      40
+        
+        Para i=3 -> codigo 30 != 20 NO ENTRA
+        Pero el 40 nunca se mueve
+        Luego hago c <- 3
+
+        Índice	Código
+          1	      10
+          2	      30
+          3	      30 ❌
+          4	      40 (sobra)
+    */
+
+
+Accion eliminarCodigo(Articulos artic[], Entero &c)
+DV
+    Entero i, cod, pos
+Inicio
+    Leer(cod)
+    pos <- 0
+    Para i desde 1 hasta c Hacer
+        Si artic[i].codigo = cod Entonces
+            pos <- i
+        FSi
+    FPara
+    Si pos != 0 Entonces
+        Para i desde pos hasta c - 1 Hacer
+            artic[i] <- artic[i + 1]
+        FPara
+        c <- c - 1
+    FSi
+Fin
+
+/*  EXPLICACION
+
+    1. Poner c - 1 evita leer fuera del rango
+    2. El bucle correcto debe iniciar en el indice donde se encontró el código y seguir
+    corriendo todos los elementos hacia arriba. Necesito una variable pos para saber donde 
+    empezar el desplazamiento, así aseguro que todos los elementos posteriores se muevan una
+    posición hacia arriba. 
+
+
+    i	      artic[i].codigo	
+    1	            101	
+    2	            202	
+    3	            303	
+    4	            404	
+    5	            505	
+
+
+
+    cod = 303
+    pos <- 0
+
+    Buscamos esa posicion:
+    i=1 <- codigo = 101 != 303 NO ENTRA pos <- 0
+    i=2 <- codigo = 202 != 303 NO ENTRA pos <- 0
+    i=3 <- codigo = 303 = 303  si ENTRA pos <- 3
+    i=4...
+    i=5...
+    Al terminar el primer bucle tienes que pos <- 3
+
+    Si pos != 0 OBVIO, porque pos = 3, entonces ENTRA
+    Segundo bucle:
+    i=3: artic[3] <- artic[4]
+    i=4: artic[4] <- artic[5]
+
+    c <- c - 1 <- c = 4
+
+    i	      artic[i].codigo
+    1	            101
+    2	            202
+    3	            404
+    4	            505
+
+
+
+
+
+*/
+
+//Evita usar Escribir(artic[i]) directamente; debes mostrar campo por campo.
+
+Accion mostrarArtCodigo(Articulos artic[], Entero c)
+DV
+  Entero i, cod
+Inicio 
+  Leer(cod)
+  Para i desde 1 hasta c Hacer
+    Si artic[i].codigo = cod Entonces
+        Escribir(artic[i].codigo)
+        Escribir(artic[i].descripcion)
+        Escribir(artic[i].color)
+        Escribir(artic[i].precioUnit)
+    FSi
+  FPara
+Fin
+
+
+d. Mostrar todos los artículos de precio unitario superior a S/.1000
+
+
+Accion mostrarArticPreUnit(Articulos artic[], Entero c)
+DV
+  Entero i 
+Inicio
+  Para i desde 1 hasta c Hacer 
+    Si artic[i].precioUnit > 1000 Entonces
+        Escribir(artic[i].precioUnit)
+    FSi
+  FPara
+Fin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,84 @@
+Crear un arreglo llamado clase de tamaño 30, que contenga estructuras de
+tipo Alumnos. Ingresar datos a t elementos del arreglo.
+Crear subprograma para hallar la cantidad de alumnos que
+nacieron antes de 2006.
+
+
+//Estructuras
+Estructura Fecha
+    Entero dia
+    Entero mes
+    Entero anio
+FEstructura
+
+Estructura Alumnos
+    Entero codigo
+    Cadena apellidos
+    Cadena nombres
+    Fecha fechaNac
+    Entero notas[6]
+FEstructura
+
+
+//Prototipos
+Accion llenar llenarVEst(Alumnos clase[], Entero c)
+Entero validarElementos()
+Entero cantNacAntes(Alumnos clase[], Entero c)
+
+
+Accion principal 
+DV
+  Alumnos clase[30]
+  Entero elementos, cantF
+Inicio 
+    elementos <- validarElementos() //opcional, para darle un poco mas de detalle
+
+
+    llenarVEst(clase, elementos) 
+    cantF <- cantNacAntes(clase, elementos)
+
+
+    /*
+        elementos y c son lo mismo, solo que elementos se usa en el principal y c como parametro. 
+    */
+
+    Escribir(elementos, cantF)
+Fin
+
+Entero validarElementos()
+DV
+  Entero t
+Inicio 
+    Hacer
+        Leer(t)
+    Mientras t<=0 | t > 30 
+    Retornar t
+Fin
+
+
+Accion llenar llenarVEst(Alumnos clase[], Entero c)
+DV
+  Entero i, k
+Inicio
+  Para i desde 1 hasta c Hacer
+    Leer(clase[i].codigo)
+    Leer(clase[i].apellidos)
+    Leer(clase[i].nombres)
+    Leer(clase[i].fechaNac.anio)
+    Para i desde 1 hasta k Hacer
+        Leer(clase[i].notas[k])
+    FPara
+  FPara
+Fin
+
+Entero cantNacAntes(Alumnos clase[], Entero c)
+DV
+  i, cant
+Inicio 
+    Para i desde 1 hasta c Hacer
+        Si clase[i].fechaNac.anio < 2006 Entonces
+            cant <- cant + 1
+        FSi
+    FPara
+    Retornar cant
+Fin

@@ -35,8 +35,8 @@ void mostrarMenu(float &saldo) {
     cin>>opcion;
 
     procesarOpcion(opcion, saldo);
-
-    } while(opcion != '4');
+    
+} while(opcion != '4');
     
 }
 
@@ -61,8 +61,6 @@ void procesarOpcion(char opcion, float &saldo) {
             cout<<"Tu nuevo saldo es: "<<saldo<<endl;
 
     }
-
-
 }
 
 void mostrarSaldo(float saldo) {

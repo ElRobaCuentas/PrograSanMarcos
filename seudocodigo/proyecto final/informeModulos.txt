@@ -1,0 +1,27 @@
+
+1. VEHICULO
+Accion crearArchivoVeh(FILE *V) 
+Accion registrarVehiculo(FILE *V, Vehiculo veh) 
+Accion consultarVehiculo(FILE *V, Vehiculo veh)
+Accion mostrarTodosVeh(FILE *V, Vehiculo veh)
+Booleano existeCodigoVehiculo(Entero codigoCliente)
+
+2. CLIENTE
+Acción crearArchivoCli(FILE *C)
+Acción registrarCliente(FILE *C, Cliente cli)
+Acción consultarCliente(FILE *C, Cliente cli)
+Acción mostrarTodosCli(FILE *C, Cliente cli)
+Booleno existeCodigoCliente(Entero codigoCliente)
+
+3. VENTA
+Acción crearArchivoVent(FILE *S)
+Acción registrarVenta(FILE *S, Venta ven)
+
+4. MENU
+Entero Acción menuPrincipal()
+Entero Acción menuVehiculo()
+Entero Acción menuCliente()
+Entero Acción menuVenta()
+Entero Acción menuConsultas()
+Booleano Acción confirmarSalir()
+Acción mostrarMensajeSalir()
