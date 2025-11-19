@@ -1,13 +1,38 @@
 #include <iostream>
+#include <cstdio> //Para el FILE, open, close
+
+
 using namespace std;
+
+
+//Estructuras
+
+// struct Vehiculo {
+
+//     int codigoVehiculo;
+
+//     string numChasis;
+//     string numMotor;
+//     string marca;
+//     string modelo;
+//     int anioFabricacion;
+//     string color;
+//     string tipoCombustible;
+//     string tipoTransmision;
+//     string tipoCarroceria;
+//     string proveedor;
+
+//     float precioVenta;
+
+// };
 
 
 //Prototipos
 
 //P1.MENUS
-void menu();
-void validarOpcion(char opcion);
-void menuVehiculo();
+void menu(FILE*& V);
+void validarOpcion(char opcion, FILE*& V);
+void menuVehiculo(FILE*& V);
 void menuCliente();
 void menuVenta();
 void menuConsulta();
@@ -15,12 +40,20 @@ void menuConsulta();
     //reporte 2
 void salir();
 
+//P2.MODULOS
+//2.1 VEHICULO
+void crearArchivoVehiculo(FILE*& V);
+// void registrarVehiculo(FILE*V, Vehiculo veh);
+
 
 //Main
 
 int main() {
 
-    menu();
+    FILE*V;
+    // struct Vehiculo veh;
+
+    menu(V); 
     
 }
 
@@ -28,29 +61,29 @@ void salir() {
     cout<<"GRACIAS POR SU VISITA"<<endl;
 }
 
-void menu() {
+void menu(FILE*& V) {
     char opcion;
     do {
-        cout<<"*********************************"<<endl;
+        cout<<"***********************************"<<endl;
         cout<<"GESTION DE VENTAS DE AUTOMOVILES"<<endl; //nombre genérico
         cout<<"1. VEHICULO"<<endl;
         cout<<"2. CLIENTE"<<endl;
         cout<<"3. VENTA"<<endl;
         cout<<"4. CONSULTAS"<<endl;
         cout<<"5. SALIR"<<endl;
-        cout<<"*********************************"<<endl;
+        cout<<"***********************************"<<endl;
         cout<<"Seleccione una opcion: ";
         cin>>opcion; 
 
-        validarOpcion(opcion); 
+        validarOpcion(opcion, V); 
     } while (opcion != '5');
 }
 
 
-void validarOpcion(char opcion) {
+void validarOpcion(char opcion, FILE*& V) {
 
     switch (opcion) {
-    case '1':  menuVehiculo();
+    case '1':  menuVehiculo(V);
         break; 
     case '2': menuCliente();
         break;
@@ -66,7 +99,7 @@ void validarOpcion(char opcion) {
     } 
 } 
 
-void menuVehiculo() {
+void menuVehiculo(FILE*& V) {
     char opc_Veh;
     do {
         cout<<"******************************************"<<endl;
@@ -81,7 +114,7 @@ void menuVehiculo() {
         cin>>opc_Veh;
 
         switch (opc_Veh) {
-            case '1': cout<<"1";
+            case '1': crearArchivoVehiculo(V);
                 break;
             case '2': cout<<"2";
                 break;
@@ -147,20 +180,20 @@ void menuVenta() {
                 break;
             case '4': cout<<"4";
                 break;
-            case '5': menu();
-                break;
+            case '5': break;
         }
     } while (opc_Ven != '5');
 }
 
 void menuConsulta() {
+
     char opc_Con;
     do {
         cout<<"*********************************************"<<endl;
         cout<<"Menu Consultas"<<endl;
         cout<<"1. Reporte de marca de auto mas vendida"<<endl;
         cout<<"2. Reporte de cliente con multiples compras"<<endl;
-        cout<<"3. Retonar al menú principal"<<endl;
+        cout<<"3. Retonar al menu principal"<<endl;
         cout<<"**********************************************"<<endl;
 
         cout<<"Seleccione una opcion: ";
@@ -176,3 +209,26 @@ void menuConsulta() {
         }
     } while (opc_Con != '3');
 }
+
+//----------------ARCHIVO VEHICULO-------------------------------
+void crearArchivoVehiculo(FILE*& V) {
+
+    V = fopen("Autos.txt", "w");
+    if(V == NULL) 
+        cout<<"NO se pudo crear el archivo Autos.txt"<<endl;
+    else { 
+        cout<<"Creacion del archivo Autos.txt exitosa"<<endl;
+        fclose(V);
+    }
+}
+
+// void registrarVehiculo(FILE*V, Vehiculo veh) {
+
+//     char temp[2];
+//     cout<<"Ingreso de auto nuevo \n";
+//     cout<<"Digite los datos del auto \n";
+//     gets(temp);
+//     cout<<"Placa: "; gets(veh.proveedor);
+
+
+// }
