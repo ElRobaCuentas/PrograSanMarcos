@@ -326,7 +326,7 @@ void crearArchivoVehiculo(FILE* V) {
 
     Entonces, lo primero que pasa cuando entro al módulo es que me pide:
     Codigo del vehiculo: 
-    !El cursos está directamente después del texto. No aparece ese espacio donde
+    !El cursor está directamente después del texto. No aparece ese espacio donde
     !podía escribir "cualquier cosa" como en la FORMA 1
     Ahora escribo -> Codigo del vehiculo: 123...Presiono ENTER
     
